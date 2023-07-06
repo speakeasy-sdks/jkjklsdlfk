@@ -1,4 +1,9 @@
 configVersion: 1.0.0
+management:
+  docChecksum: 8288fd395d61164b2aa55a65c51cce27
+  docVersion: 1.0.17
+  speakeasyVersion: 1.52.2
+  generationVersion: 2.57.2
 generation:
   comments:
     disableComments: false
@@ -8,6 +13,6 @@ generation:
   singleTagPerOp: false
   tagNamespacingDisabled: false
 go:
-  version: 0.0.1
+  version: 1.0.0
   maxMethodParams: 0
   packageName: petstore
