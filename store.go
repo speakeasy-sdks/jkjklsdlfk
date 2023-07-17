@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/sdkerrors"
 	"petstore/pkg/models/shared"
 	"petstore/pkg/utils"
 	"strings"
@@ -122,6 +123,8 @@ func (s *store) GetInventory(ctx context.Context, security operations.GetInvento
 			}
 
 			res.GetInventory200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -180,6 +183,8 @@ func (s *store) GetOrderByID(ctx context.Context, request operations.GetOrderByI
 			res.Order = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -243,6 +248,8 @@ func (s *store) PlaceOrderForm(ctx context.Context, request shared.Order) (*oper
 			}
 
 			res.Order = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
 	}
@@ -304,6 +311,8 @@ func (s *store) PlaceOrderJSON(ctx context.Context, request shared.Order) (*oper
 			}
 
 			res.Order = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
 	}
@@ -365,6 +374,8 @@ func (s *store) PlaceOrderRaw(ctx context.Context, request []byte) (*operations.
 			}
 
 			res.Order = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
 	}

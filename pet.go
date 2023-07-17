@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/sdkerrors"
 	"petstore/pkg/models/shared"
 	"petstore/pkg/utils"
 	"strings"
@@ -85,6 +86,8 @@ func (s *pet) AddPetForm(ctx context.Context, request shared.Pet, security opera
 			res.Pet = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
 	}
@@ -151,6 +154,8 @@ func (s *pet) AddPetJSON(ctx context.Context, request shared.Pet, security opera
 			res.Pet = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
 	}
@@ -217,6 +222,8 @@ func (s *pet) AddPetRaw(ctx context.Context, request []byte, security operations
 			res.Pet = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
 	}
@@ -325,6 +332,8 @@ func (s *pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsB
 			res.Pets = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 	}
@@ -385,6 +394,8 @@ func (s *pet) FindPetsByTags(ctx context.Context, request operations.FindPetsByT
 			res.Pets = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 	}
@@ -444,6 +455,8 @@ func (s *pet) GetPetByID(ctx context.Context, request operations.GetPetByIDReque
 			res.Pet = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -562,6 +575,8 @@ func (s *pet) UpdatePetForm(ctx context.Context, request shared.Pet, security op
 			res.Pet = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -632,6 +647,8 @@ func (s *pet) UpdatePetJSON(ctx context.Context, request shared.Pet, security op
 			res.Pet = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -702,6 +719,8 @@ func (s *pet) UpdatePetRaw(ctx context.Context, request []byte, security operati
 			res.Pet = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -773,6 +792,8 @@ func (s *pet) UploadFile(ctx context.Context, request operations.UploadFileReque
 			}
 
 			res.APIResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

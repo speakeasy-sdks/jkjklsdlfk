@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/sdkerrors"
 	"petstore/pkg/models/shared"
 	"petstore/pkg/utils"
 	"strings"
@@ -81,6 +82,8 @@ func (s *user) CreateUserForm(ctx context.Context, request shared.User) (*operat
 			res.User = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -143,6 +146,8 @@ func (s *user) CreateUserJSON(ctx context.Context, request shared.User) (*operat
 			res.User = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -205,6 +210,8 @@ func (s *user) CreateUserRaw(ctx context.Context, request []byte) (*operations.C
 			res.User = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -267,6 +274,8 @@ func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.Us
 			res.User = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 	}
@@ -374,6 +383,8 @@ func (s *user) GetUserByName(ctx context.Context, request operations.GetUserByNa
 			res.User = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -434,6 +445,8 @@ func (s *user) LoginUser(ctx context.Context, request operations.LoginUserReques
 		case utils.MatchContentType(contentType, `application/xml`):
 			out := string(rawBody)
 			res.LoginUser200ApplicationXMLString = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 	}
