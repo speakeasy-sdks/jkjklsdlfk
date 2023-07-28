@@ -11,6 +11,13 @@ type AddPetRawSecurity struct {
 	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
+func (o *AddPetRawSecurity) GetPetstoreAuth() string {
+	if o == nil {
+		return ""
+	}
+	return o.PetstoreAuth
+}
+
 type AddPetRawResponse struct {
 	Body        []byte
 	ContentType string
@@ -18,4 +25,39 @@ type AddPetRawResponse struct {
 	Pet         *shared.Pet
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *AddPetRawResponse) GetBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *AddPetRawResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *AddPetRawResponse) GetPet() *shared.Pet {
+	if o == nil {
+		return nil
+	}
+	return o.Pet
+}
+
+func (o *AddPetRawResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *AddPetRawResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

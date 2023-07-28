@@ -11,9 +11,23 @@ type FindPetsByTagsSecurity struct {
 	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
+func (o *FindPetsByTagsSecurity) GetPetstoreAuth() string {
+	if o == nil {
+		return ""
+	}
+	return o.PetstoreAuth
+}
+
 type FindPetsByTagsRequest struct {
 	// Tags to filter by
 	Tags []string `queryParam:"style=form,explode=true,name=tags"`
+}
+
+func (o *FindPetsByTagsRequest) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
 }
 
 type FindPetsByTagsResponse struct {
@@ -23,4 +37,39 @@ type FindPetsByTagsResponse struct {
 	Pets        []shared.Pet
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *FindPetsByTagsResponse) GetBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *FindPetsByTagsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *FindPetsByTagsResponse) GetPets() []shared.Pet {
+	if o == nil {
+		return nil
+	}
+	return o.Pets
+}
+
+func (o *FindPetsByTagsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *FindPetsByTagsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

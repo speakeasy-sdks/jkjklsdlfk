@@ -10,10 +10,45 @@ type GetInventorySecurity struct {
 	APIKey string `security:"scheme,type=apiKey,subtype=header,name=api_key"`
 }
 
+func (o *GetInventorySecurity) GetAPIKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.APIKey
+}
+
 type GetInventoryResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// successful operation
 	GetInventory200ApplicationJSONObject map[string]int
+}
+
+func (o *GetInventoryResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetInventoryResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetInventoryResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *GetInventoryResponse) GetGetInventory200ApplicationJSONObject() map[string]int {
+	if o == nil {
+		return nil
+	}
+	return o.GetInventory200ApplicationJSONObject
 }

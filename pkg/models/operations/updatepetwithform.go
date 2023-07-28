@@ -10,6 +10,13 @@ type UpdatePetWithFormSecurity struct {
 	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
+func (o *UpdatePetWithFormSecurity) GetPetstoreAuth() string {
+	if o == nil {
+		return ""
+	}
+	return o.PetstoreAuth
+}
+
 type UpdatePetWithFormRequest struct {
 	// Name of pet that needs to be updated
 	Name *string `queryParam:"style=form,explode=true,name=name"`
@@ -19,8 +26,50 @@ type UpdatePetWithFormRequest struct {
 	Status *string `queryParam:"style=form,explode=true,name=status"`
 }
 
+func (o *UpdatePetWithFormRequest) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *UpdatePetWithFormRequest) GetPetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.PetID
+}
+
+func (o *UpdatePetWithFormRequest) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type UpdatePetWithFormResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *UpdatePetWithFormResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdatePetWithFormResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdatePetWithFormResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

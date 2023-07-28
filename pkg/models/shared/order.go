@@ -48,3 +48,45 @@ type Order struct {
 	// Order Status
 	Status *OrderStatus `json:"status,omitempty" form:"name=status"`
 }
+
+func (o *Order) GetComplete() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Complete
+}
+
+func (o *Order) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Order) GetPetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PetID
+}
+
+func (o *Order) GetQuantity() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *Order) GetShipDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ShipDate
+}
+
+func (o *Order) GetStatus() *OrderStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

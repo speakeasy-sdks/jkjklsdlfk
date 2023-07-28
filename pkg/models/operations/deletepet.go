@@ -10,14 +10,56 @@ type DeletePetSecurity struct {
 	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
+func (o *DeletePetSecurity) GetPetstoreAuth() string {
+	if o == nil {
+		return ""
+	}
+	return o.PetstoreAuth
+}
+
 type DeletePetRequest struct {
 	APIKey *string `header:"style=simple,explode=false,name=api_key"`
 	// Pet id to delete
 	PetID int64 `pathParam:"style=simple,explode=false,name=petId"`
 }
 
+func (o *DeletePetRequest) GetAPIKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIKey
+}
+
+func (o *DeletePetRequest) GetPetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.PetID
+}
+
 type DeletePetResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *DeletePetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeletePetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeletePetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

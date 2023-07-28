@@ -14,8 +14,43 @@ type UpdateUserJSONRequest struct {
 	Username string `pathParam:"style=simple,explode=false,name=username"`
 }
 
+func (o *UpdateUserJSONRequest) GetUser() *shared.User {
+	if o == nil {
+		return nil
+	}
+	return o.User
+}
+
+func (o *UpdateUserJSONRequest) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
 type UpdateUserJSONResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *UpdateUserJSONResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateUserJSONResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateUserJSONResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

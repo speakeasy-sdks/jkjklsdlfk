@@ -13,6 +13,13 @@ type FindPetsByStatusSecurity struct {
 	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
+func (o *FindPetsByStatusSecurity) GetPetstoreAuth() string {
+	if o == nil {
+		return ""
+	}
+	return o.PetstoreAuth
+}
+
 // FindPetsByStatusStatus - Status values that need to be considered for filter
 type FindPetsByStatusStatus string
 
@@ -49,6 +56,13 @@ type FindPetsByStatusRequest struct {
 	Status *FindPetsByStatusStatus `queryParam:"style=form,explode=true,name=status"`
 }
 
+func (o *FindPetsByStatusRequest) GetStatus() *FindPetsByStatusStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type FindPetsByStatusResponse struct {
 	Body        []byte
 	ContentType string
@@ -56,4 +70,39 @@ type FindPetsByStatusResponse struct {
 	Pets        []shared.Pet
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *FindPetsByStatusResponse) GetBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *FindPetsByStatusResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *FindPetsByStatusResponse) GetPets() []shared.Pet {
+	if o == nil {
+		return nil
+	}
+	return o.Pets
+}
+
+func (o *FindPetsByStatusResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *FindPetsByStatusResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -15,3 +15,38 @@ type CreateUserJSONResponse struct {
 	// successful operation
 	User *shared.User
 }
+
+func (o *CreateUserJSONResponse) GetBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *CreateUserJSONResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateUserJSONResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateUserJSONResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *CreateUserJSONResponse) GetUser() *shared.User {
+	if o == nil {
+		return nil
+	}
+	return o.User
+}

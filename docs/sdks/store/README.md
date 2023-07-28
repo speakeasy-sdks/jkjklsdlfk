@@ -79,11 +79,12 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.GetInventorySecurity{
+            APIKey: "",
+        }
 
     ctx := context.Background()
-    res, err := s.Store.GetInventory(ctx, operations.GetInventorySecurity{
-        APIKey: "",
-    })
+    res, err := s.Store.GetInventory(ctx, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }

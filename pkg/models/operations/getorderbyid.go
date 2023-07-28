@@ -12,6 +12,13 @@ type GetOrderByIDRequest struct {
 	OrderID int64 `pathParam:"style=simple,explode=false,name=orderId"`
 }
 
+func (o *GetOrderByIDRequest) GetOrderID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.OrderID
+}
+
 type GetOrderByIDResponse struct {
 	Body        []byte
 	ContentType string
@@ -19,4 +26,39 @@ type GetOrderByIDResponse struct {
 	Order       *shared.Order
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *GetOrderByIDResponse) GetBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *GetOrderByIDResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetOrderByIDResponse) GetOrder() *shared.Order {
+	if o == nil {
+		return nil
+	}
+	return o.Order
+}
+
+func (o *GetOrderByIDResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetOrderByIDResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -14,6 +14,9 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.AddPetFormSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.AddPetForm(ctx, shared.Pet{
@@ -47,9 +50,7 @@ func main() {
                 Name: petstore.String("Mrs. Sophie Smith MD"),
             },
         },
-    }, operations.AddPetFormSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }

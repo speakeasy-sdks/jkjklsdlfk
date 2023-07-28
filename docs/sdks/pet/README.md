@@ -40,6 +40,9 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.AddPetFormSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.AddPetForm(ctx, shared.Pet{
@@ -71,9 +74,7 @@ func main() {
                 Name: petstore.String("Everett Breitenberg"),
             },
         },
-    }, operations.AddPetFormSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -117,6 +118,9 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.AddPetJSONSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.AddPetJSON(ctx, shared.Pet{
@@ -141,9 +145,7 @@ func main() {
                 Name: petstore.String("Curtis Morissette"),
             },
         },
-    }, operations.AddPetJSONSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -187,11 +189,12 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.AddPetRawSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
-    res, err := s.Pet.AddPetRaw(ctx, []byte("saepe"), operations.AddPetRawSecurity{
-        PetstoreAuth: "",
-    })
+    res, err := s.Pet.AddPetRaw(ctx, []byte("saepe"), operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -234,14 +237,15 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.DeletePetSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.DeletePet(ctx, operations.DeletePetRequest{
         APIKey: petstore.String("fuga"),
         PetID: 449950,
-    }, operations.DeletePetSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -284,13 +288,14 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.FindPetsByStatusSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.FindPetsByStatus(ctx, operations.FindPetsByStatusRequest{
         Status: operations.FindPetsByStatusStatusPending.ToPointer(),
-    }, operations.FindPetsByStatusSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -333,6 +338,9 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.FindPetsByTagsSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.FindPetsByTags(ctx, operations.FindPetsByTagsRequest{
@@ -341,9 +349,7 @@ func main() {
             "saepe",
             "quidem",
         },
-    }, operations.FindPetsByTagsSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -386,13 +392,14 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.GetPetByIDSecurity{
+            APIKey: petstore.String(""),
+        }
 
     ctx := context.Background()
     res, err := s.Pet.GetPetByID(ctx, operations.GetPetByIDRequest{
         PetID: 99280,
-    }, operations.GetPetByIDSecurity{
-        APIKey: petstore.String(""),
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -435,15 +442,16 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.UpdatePetWithFormSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetWithForm(ctx, operations.UpdatePetWithFormRequest{
         Name: petstore.String("Lela Orn"),
         PetID: 170909,
         Status: petstore.String("dolorem"),
-    }, operations.UpdatePetWithFormSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -487,6 +495,9 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.UpdatePetFormSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetForm(ctx, shared.Pet{
@@ -515,9 +526,7 @@ func main() {
                 Name: petstore.String("Shaun McCullough"),
             },
         },
-    }, operations.UpdatePetFormSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -561,6 +570,9 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.UpdatePetJSONSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetJSON(ctx, shared.Pet{
@@ -581,9 +593,7 @@ func main() {
                 Name: petstore.String("Kayla O'Kon"),
             },
         },
-    }, operations.UpdatePetJSONSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -627,11 +637,12 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.UpdatePetRawSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
-    res, err := s.Pet.UpdatePetRaw(ctx, []byte("quo"), operations.UpdatePetRawSecurity{
-        PetstoreAuth: "",
-    })
+    res, err := s.Pet.UpdatePetRaw(ctx, []byte("quo"), operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -674,15 +685,16 @@ import(
 
 func main() {
     s := petstore.New()
+    operationSecurity := operations.UploadFileSecurity{
+            PetstoreAuth: "",
+        }
 
     ctx := context.Background()
     res, err := s.Pet.UploadFile(ctx, operations.UploadFileRequest{
         RequestBody: []byte("sequi"),
         AdditionalMetadata: petstore.String("tenetur"),
         PetID: 368725,
-    }, operations.UploadFileSecurity{
-        PetstoreAuth: "",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }

@@ -13,6 +13,20 @@ type LoginUserRequest struct {
 	Username *string `queryParam:"style=form,explode=true,name=username"`
 }
 
+func (o *LoginUserRequest) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *LoginUserRequest) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
 type LoginUserResponse struct {
 	ContentType string
 	Headers     map[string][]string
@@ -22,4 +36,46 @@ type LoginUserResponse struct {
 	LoginUser200ApplicationJSONString *string
 	// successful operation
 	LoginUser200ApplicationXMLString *string
+}
+
+func (o *LoginUserResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *LoginUserResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *LoginUserResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *LoginUserResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *LoginUserResponse) GetLoginUser200ApplicationJSONString() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LoginUser200ApplicationJSONString
+}
+
+func (o *LoginUserResponse) GetLoginUser200ApplicationXMLString() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LoginUser200ApplicationXMLString
 }

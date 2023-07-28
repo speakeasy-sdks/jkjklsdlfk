@@ -12,9 +12,30 @@ type GetPetByIDSecurity struct {
 	PetstoreAuth *string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
+func (o *GetPetByIDSecurity) GetAPIKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIKey
+}
+
+func (o *GetPetByIDSecurity) GetPetstoreAuth() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PetstoreAuth
+}
+
 type GetPetByIDRequest struct {
 	// ID of pet to return
 	PetID int64 `pathParam:"style=simple,explode=false,name=petId"`
+}
+
+func (o *GetPetByIDRequest) GetPetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.PetID
 }
 
 type GetPetByIDResponse struct {
@@ -24,4 +45,39 @@ type GetPetByIDResponse struct {
 	Pet         *shared.Pet
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *GetPetByIDResponse) GetBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *GetPetByIDResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetPetByIDResponse) GetPet() *shared.Pet {
+	if o == nil {
+		return nil
+	}
+	return o.Pet
+}
+
+func (o *GetPetByIDResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetPetByIDResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -48,3 +48,45 @@ type Pet struct {
 	Status *PetStatus `json:"status,omitempty" form:"name=status"`
 	Tags   []Tag      `json:"tags,omitempty" form:"name=tags,json"`
 }
+
+func (o *Pet) GetCategory() *Category {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *Pet) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Pet) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Pet) GetPhotoUrls() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.PhotoUrls
+}
+
+func (o *Pet) GetStatus() *PetStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *Pet) GetTags() []Tag {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}

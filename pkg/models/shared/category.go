@@ -6,3 +6,17 @@ type Category struct {
 	ID   *int64  `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
+
+func (o *Category) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Category) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

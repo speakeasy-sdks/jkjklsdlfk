@@ -15,3 +15,38 @@ type CreateUserFormResponse struct {
 	// successful operation
 	User *shared.User
 }
+
+func (o *CreateUserFormResponse) GetBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *CreateUserFormResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateUserFormResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateUserFormResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *CreateUserFormResponse) GetUser() *shared.User {
+	if o == nil {
+		return nil
+	}
+	return o.User
+}

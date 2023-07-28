@@ -15,3 +15,38 @@ type CreateUserRawResponse struct {
 	// successful operation
 	User *shared.User
 }
+
+func (o *CreateUserRawResponse) GetBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *CreateUserRawResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateUserRawResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateUserRawResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *CreateUserRawResponse) GetUser() *shared.User {
+	if o == nil {
+		return nil
+	}
+	return o.User
+}

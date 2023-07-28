@@ -13,8 +13,43 @@ type UpdateUserRawRequest struct {
 	Username string `pathParam:"style=simple,explode=false,name=username"`
 }
 
+func (o *UpdateUserRawRequest) GetRequestBody() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
+}
+
+func (o *UpdateUserRawRequest) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
 type UpdateUserRawResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *UpdateUserRawResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateUserRawResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateUserRawResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

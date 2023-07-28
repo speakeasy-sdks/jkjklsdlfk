@@ -11,3 +11,24 @@ type LogoutUserResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *LogoutUserResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *LogoutUserResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *LogoutUserResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

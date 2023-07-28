@@ -11,8 +11,36 @@ type DeleteUserRequest struct {
 	Username string `pathParam:"style=simple,explode=false,name=username"`
 }
 
+func (o *DeleteUserRequest) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
 type DeleteUserResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *DeleteUserResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteUserResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteUserResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -8,3 +8,24 @@ type APIResponse struct {
 	Message *string `json:"message,omitempty"`
 	Type    *string `json:"type,omitempty"`
 }
+
+func (o *APIResponse) GetCode() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *APIResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *APIResponse) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

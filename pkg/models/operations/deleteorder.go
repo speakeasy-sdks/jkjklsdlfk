@@ -11,8 +11,36 @@ type DeleteOrderRequest struct {
 	OrderID int64 `pathParam:"style=simple,explode=false,name=orderId"`
 }
 
+func (o *DeleteOrderRequest) GetOrderID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.OrderID
+}
+
 type DeleteOrderResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *DeleteOrderResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteOrderResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteOrderResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }
