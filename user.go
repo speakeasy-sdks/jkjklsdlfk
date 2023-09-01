@@ -28,7 +28,17 @@ func newUser(sdkConfig sdkConfiguration) *user {
 
 // CreateUserForm - Create user
 // This can only be done by the logged in user.
-func (s *user) CreateUserForm(ctx context.Context, request shared.User) (*operations.CreateUserFormResponse, error) {
+func (s *user) CreateUserForm(ctx context.Context, request shared.User, opts ...operations.Option) (*operations.CreateUserFormResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionAcceptHeaderOverride,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"
 
@@ -41,7 +51,12 @@ func (s *user) CreateUserForm(ctx context.Context, request shared.User) (*operat
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	if o.AcceptHeaderOverride != nil {
+		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
+	} else {
+		req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	}
+
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
@@ -92,7 +107,17 @@ func (s *user) CreateUserForm(ctx context.Context, request shared.User) (*operat
 
 // CreateUserJSON - Create user
 // This can only be done by the logged in user.
-func (s *user) CreateUserJSON(ctx context.Context, request shared.User) (*operations.CreateUserJSONResponse, error) {
+func (s *user) CreateUserJSON(ctx context.Context, request shared.User, opts ...operations.Option) (*operations.CreateUserJSONResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionAcceptHeaderOverride,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"
 
@@ -105,7 +130,12 @@ func (s *user) CreateUserJSON(ctx context.Context, request shared.User) (*operat
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	if o.AcceptHeaderOverride != nil {
+		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
+	} else {
+		req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	}
+
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
@@ -156,7 +186,17 @@ func (s *user) CreateUserJSON(ctx context.Context, request shared.User) (*operat
 
 // CreateUserRaw - Create user
 // This can only be done by the logged in user.
-func (s *user) CreateUserRaw(ctx context.Context, request []byte) (*operations.CreateUserRawResponse, error) {
+func (s *user) CreateUserRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.CreateUserRawResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionAcceptHeaderOverride,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"
 
@@ -169,7 +209,12 @@ func (s *user) CreateUserRaw(ctx context.Context, request []byte) (*operations.C
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	if o.AcceptHeaderOverride != nil {
+		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
+	} else {
+		req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	}
+
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
@@ -220,7 +265,17 @@ func (s *user) CreateUserRaw(ctx context.Context, request []byte) (*operations.C
 
 // CreateUsersWithListInput - Creates list of users with given input array
 // Creates list of users with given input array
-func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.User) (*operations.CreateUsersWithListInputResponse, error) {
+func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.User, opts ...operations.Option) (*operations.CreateUsersWithListInputResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionAcceptHeaderOverride,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user/createWithList"
 
@@ -233,7 +288,12 @@ func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.Us
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	if o.AcceptHeaderOverride != nil {
+		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
+	} else {
+		req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	}
+
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
@@ -333,7 +393,17 @@ func (s *user) DeleteUser(ctx context.Context, request operations.DeleteUserRequ
 }
 
 // GetUserByName - Get user by user name
-func (s *user) GetUserByName(ctx context.Context, request operations.GetUserByNameRequest) (*operations.GetUserByNameResponse, error) {
+func (s *user) GetUserByName(ctx context.Context, request operations.GetUserByNameRequest, opts ...operations.Option) (*operations.GetUserByNameResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionAcceptHeaderOverride,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/user/{username}", request, nil)
 	if err != nil {
@@ -344,7 +414,12 @@ func (s *user) GetUserByName(ctx context.Context, request operations.GetUserByNa
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	if o.AcceptHeaderOverride != nil {
+		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
+	} else {
+		req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	}
+
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	client := s.sdkConfiguration.DefaultClient
@@ -395,7 +470,17 @@ func (s *user) GetUserByName(ctx context.Context, request operations.GetUserByNa
 }
 
 // LoginUser - Logs user into the system
-func (s *user) LoginUser(ctx context.Context, request operations.LoginUserRequest) (*operations.LoginUserResponse, error) {
+func (s *user) LoginUser(ctx context.Context, request operations.LoginUserRequest, opts ...operations.Option) (*operations.LoginUserResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionAcceptHeaderOverride,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user/login"
 
@@ -403,7 +488,12 @@ func (s *user) LoginUser(ctx context.Context, request operations.LoginUserReques
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	if o.AcceptHeaderOverride != nil {
+		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
+	} else {
+		req.Header.Set("Accept", "application/json;q=1, application/xml;q=0")
+	}
+
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
