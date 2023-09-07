@@ -16,6 +16,7 @@ import (
 )
 
 // pet - Everything about your Pets
+//
 // http://swagger.io - Find out more
 type pet struct {
 	sdkConfiguration sdkConfiguration

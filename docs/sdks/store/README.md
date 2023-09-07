@@ -36,7 +36,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Store.DeleteOrder(ctx, operations.DeleteOrderRequest{
-        OrderID: 662527,
+        OrderID: 414662,
     })
     if err != nil {
         log.Fatal(err)
@@ -129,7 +129,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Store.GetOrderByID(ctx, operations.GetOrderByIDRequest{
-        OrderID: 820994,
+        OrderID: 473600,
     })
     if err != nil {
         log.Fatal(err)
@@ -180,7 +180,7 @@ func main() {
         ID: petstore.Int64(10),
         PetID: petstore.Int64(198772),
         Quantity: petstore.Int(7),
-        ShipDate: types.MustTimeFromString("2022-11-26T13:23:33.410Z"),
+        ShipDate: types.MustTimeFromString("2022-10-24T23:43:42.369Z"),
         Status: shared.OrderStatusApproved.ToPointer(),
     })
     if err != nil {
@@ -232,7 +232,7 @@ func main() {
         ID: petstore.Int64(10),
         PetID: petstore.Int64(198772),
         Quantity: petstore.Int(7),
-        ShipDate: types.MustTimeFromString("2021-04-29T07:12:18.684Z"),
+        ShipDate: types.MustTimeFromString("2020-10-16T01:47:24.760Z"),
         Status: shared.OrderStatusApproved.ToPointer(),
     })
     if err != nil {
@@ -279,7 +279,7 @@ func main() {
     s := petstore.New()
 
     ctx := context.Background()
-    res, err := s.Store.PlaceOrderRaw(ctx, []byte("laborum"))
+    res, err := s.Store.PlaceOrderRaw(ctx, []byte("esse"))
     if err != nil {
         log.Fatal(err)
     }

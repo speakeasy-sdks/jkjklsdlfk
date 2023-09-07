@@ -16,6 +16,7 @@ import (
 )
 
 // store - Access to Petstore orders
+//
 // http://swagger.io - Find out more about our store
 type store struct {
 	sdkConfiguration sdkConfiguration

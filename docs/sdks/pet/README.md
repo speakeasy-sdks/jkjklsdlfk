@@ -34,8 +34,8 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/shared"
 )
 
 func main() {
@@ -53,25 +53,13 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "ipsam",
+            "vel",
         },
-        Status: shared.PetStatusSold.ToPointer(),
+        Status: shared.PetStatusPending.ToPointer(),
         Tags: []shared.Tag{
             shared.Tag{
-                ID: petstore.Int64(778157),
-                Name: petstore.String("Teri Strosin"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(799159),
-                Name: petstore.String("Erik Lebsack"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(118274),
-                Name: petstore.String("Luke McCullough"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(944669),
-                Name: petstore.String("Everett Breitenberg"),
+                ID: petstore.Int64(645894),
+                Name: petstore.String("Willie Gulgowski DVM"),
             },
         },
     }, operationSecurity)
@@ -112,8 +100,8 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/shared"
 )
 
 func main() {
@@ -131,18 +119,13 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "qui",
-            "impedit",
+            "tempora",
         },
-        Status: shared.PetStatusSold.ToPointer(),
+        Status: shared.PetStatusPending.ToPointer(),
         Tags: []shared.Tag{
             shared.Tag{
-                ID: petstore.Int64(216550),
-                Name: petstore.String("Brandon Auer"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(149675),
-                Name: petstore.String("Curtis Morissette"),
+                ID: petstore.Int64(477665),
+                Name: petstore.String("Irving Lehner"),
             },
         },
     }, operationSecurity)
@@ -183,8 +166,8 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/shared"
 )
 
 func main() {
@@ -194,7 +177,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.Pet.AddPetRaw(ctx, []byte("saepe"), operationSecurity)
+    res, err := s.Pet.AddPetRaw(ctx, []byte("nisi"), operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -243,8 +226,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.DeletePet(ctx, operations.DeletePetRequest{
-        APIKey: petstore.String("fuga"),
-        PetID: 449950,
+        APIKey: petstore.String("recusandae"),
+        PetID: 836079,
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)
@@ -294,7 +277,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.FindPetsByStatus(ctx, operations.FindPetsByStatusRequest{
-        Status: operations.FindPetsByStatusStatusPending.ToPointer(),
+        Status: operations.FindPetsByStatusStatusAvailable.ToPointer(),
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)
@@ -345,9 +328,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Pet.FindPetsByTags(ctx, operations.FindPetsByTagsRequest{
         Tags: []string{
-            "iure",
-            "saepe",
-            "quidem",
+            "quis",
         },
     }, operationSecurity)
     if err != nil {
@@ -398,7 +379,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.GetPetByID(ctx, operations.GetPetByIDRequest{
-        PetID: 99280,
+        PetID: 87129,
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)
@@ -448,9 +429,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetWithForm(ctx, operations.UpdatePetWithFormRequest{
-        Name: petstore.String("Lela Orn"),
-        PetID: 170909,
-        Status: petstore.String("dolorem"),
+        Name: petstore.String("Christopher Hills"),
+        PetID: 778157,
+        Status: petstore.String("odit"),
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)
@@ -489,8 +470,8 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/shared"
 )
 
 func main() {
@@ -508,22 +489,13 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "explicabo",
-            "nobis",
+            "at",
         },
-        Status: shared.PetStatusAvailable.ToPointer(),
+        Status: shared.PetStatusSold.ToPointer(),
         Tags: []shared.Tag{
             shared.Tag{
-                ID: petstore.Int64(363711),
-                Name: petstore.String("Velma Batz"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(988374),
-                Name: petstore.String("Juan O'Hara"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(161309),
-                Name: petstore.String("Shaun McCullough"),
+                ID: petstore.Int64(978619),
+                Name: petstore.String("Bernadette Schmidt"),
             },
         },
     }, operationSecurity)
@@ -564,8 +536,8 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/shared"
 )
 
 func main() {
@@ -583,14 +555,13 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "molestiae",
-            "velit",
+            "porro",
         },
-        Status: shared.PetStatusPending.ToPointer(),
+        Status: shared.PetStatusSold.ToPointer(),
         Tags: []shared.Tag{
             shared.Tag{
-                ID: petstore.Int64(338007),
-                Name: petstore.String("Kayla O'Kon"),
+                ID: petstore.Int64(118274),
+                Name: petstore.String("Luke McCullough"),
             },
         },
     }, operationSecurity)
@@ -631,8 +602,8 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/shared"
 )
 
 func main() {
@@ -642,7 +613,7 @@ func main() {
         }
 
     ctx := context.Background()
-    res, err := s.Pet.UpdatePetRaw(ctx, []byte("quo"), operationSecurity)
+    res, err := s.Pet.UpdatePetRaw(ctx, []byte("hic"), operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -691,9 +662,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.UploadFile(ctx, operations.UploadFileRequest{
-        RequestBody: []byte("sequi"),
-        AdditionalMetadata: petstore.String("tenetur"),
-        PetID: 368725,
+        RequestBody: []byte("optio"),
+        AdditionalMetadata: petstore.String("totam"),
+        PetID: 105907,
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)

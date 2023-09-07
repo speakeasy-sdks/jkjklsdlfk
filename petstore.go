@@ -57,7 +57,7 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], nil
 }
 
-// Petstore - Swagger Petstore - OpenAPI 3.0: This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+// Swagger Petstore - OpenAPI 3.0: This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
 // Swagger at [http://swagger.io](http://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
 // You can now help us improve the API whether it's by making changes to the definition itself or to the code.
 // That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
@@ -65,15 +65,18 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 // Some useful links:
 // - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
 // - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
+//
 // http://swagger.io - Find out more about Swagger
 type Petstore struct {
-	// Pet - Everything about your Pets
+	// Everything about your Pets
+	//
 	// http://swagger.io - Find out more
 	Pet *pet
-	// Store - Access to Petstore orders
+	// Access to Petstore orders
+	//
 	// http://swagger.io - Find out more about our store
 	Store *store
-	// User - Operations about user
+	// Operations about user
 	User *user
 
 	sdkConfiguration sdkConfiguration
@@ -123,8 +126,8 @@ func New(opts ...SDKOption) *Petstore {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.17",
-			SDKVersion:        "1.3.0",
-			GenVersion:        "2.91.2",
+			SDKVersion:        "1.3.1",
+			GenVersion:        "2.101.0",
 		},
 	}
 	for _, opt := range opts {

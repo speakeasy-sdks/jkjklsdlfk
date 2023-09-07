@@ -19,8 +19,8 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
+	"petstore/pkg/models/shared"
 )
 
 func main() {
@@ -38,27 +38,13 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "provident",
-            "distinctio",
-            "quibusdam",
+            "corrupti",
         },
         Status: shared.PetStatusPending.ToPointer(),
         Tags: []shared.Tag{
             shared.Tag{
-                ID: petstore.Int64(544883),
-                Name: petstore.String("Ben Mueller"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(437587),
-                Name: petstore.String("Raquel Bednar"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(383441),
-                Name: petstore.String("Alexandra Schulist"),
-            },
-            shared.Tag{
-                ID: petstore.Int64(568045),
-                Name: petstore.String("Mrs. Sophie Smith MD"),
+                ID: petstore.Int64(715190),
+                Name: petstore.String("Stuart Stiedemann"),
             },
         },
     }, operationSecurity)
