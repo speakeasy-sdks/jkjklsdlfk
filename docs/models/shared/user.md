@@ -1,7 +1,5 @@
 # User
 
-Created user object
-
 
 ## Fields
 

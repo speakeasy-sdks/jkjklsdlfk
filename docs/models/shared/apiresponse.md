@@ -1,7 +1,5 @@
 # APIResponse
 
-successful operation
-
 
 ## Fields
 

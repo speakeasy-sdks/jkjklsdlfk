@@ -1,7 +1,5 @@
 # Pet
 
-Create a new pet in the store
-
 
 ## Fields
 

@@ -38,7 +38,6 @@ func (e *PetStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Pet - Create a new pet in the store
 type Pet struct {
 	Category  *Category `json:"category,omitempty" form:"name=category,json"`
 	ID        *int64    `json:"id,omitempty" form:"name=id"`
