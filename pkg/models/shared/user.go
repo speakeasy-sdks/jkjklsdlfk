@@ -2,7 +2,6 @@
 
 package shared
 
-// User - Created user object
 type User struct {
 	Email     *string `json:"email,omitempty" form:"name=email"`
 	FirstName *string `json:"firstName,omitempty" form:"name=firstName"`
