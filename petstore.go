@@ -133,8 +133,8 @@ func New(opts ...SDKOption) *Petstore {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.17",
-			SDKVersion:        "1.4.0",
-			GenVersion:        "2.107.3",
+			SDKVersion:        "1.4.1",
+			GenVersion:        "2.118.1",
 		},
 	}
 	for _, opt := range opts {

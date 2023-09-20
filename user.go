@@ -28,7 +28,7 @@ func newUser(sdkConfig sdkConfiguration) *user {
 
 // CreateUserForm - Create user
 // This can only be done by the logged in user.
-func (s *user) CreateUserForm(ctx context.Context, request shared.User, opts ...operations.Option) (*operations.CreateUserFormResponse, error) {
+func (s *user) CreateUserForm(ctx context.Context, request *shared.User, opts ...operations.Option) (*operations.CreateUserFormResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -42,7 +42,7 @@ func (s *user) CreateUserForm(ctx context.Context, request shared.User, opts ...
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "form")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -89,12 +89,12 @@ func (s *user) CreateUserForm(ctx context.Context, request shared.User, opts ...
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.User
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.User
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.User = out
+			res.User = &out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
 		default:
@@ -107,7 +107,7 @@ func (s *user) CreateUserForm(ctx context.Context, request shared.User, opts ...
 
 // CreateUserJSON - Create user
 // This can only be done by the logged in user.
-func (s *user) CreateUserJSON(ctx context.Context, request shared.User, opts ...operations.Option) (*operations.CreateUserJSONResponse, error) {
+func (s *user) CreateUserJSON(ctx context.Context, request *shared.User, opts ...operations.Option) (*operations.CreateUserJSONResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -121,7 +121,7 @@ func (s *user) CreateUserJSON(ctx context.Context, request shared.User, opts ...
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -168,12 +168,12 @@ func (s *user) CreateUserJSON(ctx context.Context, request shared.User, opts ...
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.User
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.User
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.User = out
+			res.User = &out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
 		default:
@@ -200,7 +200,7 @@ func (s *user) CreateUserRaw(ctx context.Context, request []byte, opts ...operat
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "raw")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "raw", `request:"mediaType=application/xml"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -247,12 +247,12 @@ func (s *user) CreateUserRaw(ctx context.Context, request []byte, opts ...operat
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.User
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.User
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.User = out
+			res.User = &out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
 		default:
@@ -279,7 +279,7 @@ func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.Us
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user/createWithList"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -326,12 +326,12 @@ func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.Us
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.User
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.User
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.User = out
+			res.User = &out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
 		default:
@@ -450,12 +450,12 @@ func (s *user) GetUserByName(ctx context.Context, request operations.GetUserByNa
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.User
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.User
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.User = out
+			res.User = &out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
 		default:
@@ -596,7 +596,7 @@ func (s *user) UpdateUserForm(ctx context.Context, request operations.UpdateUser
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "User", "form")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "User", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -650,7 +650,7 @@ func (s *user) UpdateUserJSON(ctx context.Context, request operations.UpdateUser
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "User", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "User", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -704,7 +704,7 @@ func (s *user) UpdateUserRaw(ctx context.Context, request operations.UpdateUserR
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "RequestBody", "raw")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "raw", `request:"mediaType=application/xml"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}

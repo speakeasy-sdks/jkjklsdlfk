@@ -119,7 +119,7 @@ func (s *store) GetInventory(ctx context.Context, security operations.GetInvento
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out map[string]int
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
@@ -191,12 +191,12 @@ func (s *store) GetOrderByID(ctx context.Context, request operations.GetOrderByI
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.Order
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.Order
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Order = out
+			res.Order = &out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
 		default:
@@ -212,11 +212,11 @@ func (s *store) GetOrderByID(ctx context.Context, request operations.GetOrderByI
 
 // PlaceOrderForm - Place an order for a pet
 // Place a new order in the store
-func (s *store) PlaceOrderForm(ctx context.Context, request shared.Order) (*operations.PlaceOrderFormResponse, error) {
+func (s *store) PlaceOrderForm(ctx context.Context, request *shared.Order) (*operations.PlaceOrderFormResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/store/order"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "form")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -258,12 +258,12 @@ func (s *store) PlaceOrderForm(ctx context.Context, request shared.Order) (*oper
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.Order
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.Order
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Order = out
+			res.Order = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -275,11 +275,11 @@ func (s *store) PlaceOrderForm(ctx context.Context, request shared.Order) (*oper
 
 // PlaceOrderJSON - Place an order for a pet
 // Place a new order in the store
-func (s *store) PlaceOrderJSON(ctx context.Context, request shared.Order) (*operations.PlaceOrderJSONResponse, error) {
+func (s *store) PlaceOrderJSON(ctx context.Context, request *shared.Order) (*operations.PlaceOrderJSONResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/store/order"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -321,12 +321,12 @@ func (s *store) PlaceOrderJSON(ctx context.Context, request shared.Order) (*oper
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.Order
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.Order
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Order = out
+			res.Order = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -342,7 +342,7 @@ func (s *store) PlaceOrderRaw(ctx context.Context, request []byte) (*operations.
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/store/order"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "raw")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "raw", `request:"mediaType=application/xml"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -384,12 +384,12 @@ func (s *store) PlaceOrderRaw(ctx context.Context, request []byte) (*operations.
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.Order
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+			var out shared.Order
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.Order = out
+			res.Order = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

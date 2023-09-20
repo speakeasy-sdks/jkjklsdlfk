@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"petstore/pkg/utils"
 	"time"
 )
 
@@ -47,6 +48,17 @@ type Order struct {
 	ShipDate *time.Time `json:"shipDate,omitempty" form:"name=shipDate"`
 	// Order Status
 	Status *OrderStatus `json:"status,omitempty" form:"name=status"`
+}
+
+func (o Order) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *Order) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Order) GetComplete() *bool {
