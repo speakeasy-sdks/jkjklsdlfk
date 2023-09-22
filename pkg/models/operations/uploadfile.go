@@ -7,17 +7,6 @@ import (
 	"petstore/pkg/models/shared"
 )
 
-type UploadFileSecurity struct {
-	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
-}
-
-func (o *UploadFileSecurity) GetPetstoreAuth() string {
-	if o == nil {
-		return ""
-	}
-	return o.PetstoreAuth
-}
-
 type UploadFileRequest struct {
 	RequestBody []byte `request:"mediaType=application/octet-stream"`
 	// Additional Metadata

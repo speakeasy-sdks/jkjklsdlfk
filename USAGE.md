@@ -8,15 +8,15 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/operations"
 	"petstore/pkg/models/shared"
 )
 
 func main() {
-    s := petstore.New()
-    operationSecurity := operations.AddPetFormSecurity{
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
             PetstoreAuth: "",
-        }
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.AddPetForm(ctx, shared.Pet{
@@ -36,7 +36,7 @@ func main() {
                 Name: petstore.String("Stuart Stiedemann"),
             },
         },
-    }, operationSecurity)
+    })
     if err != nil {
         log.Fatal(err)
     }

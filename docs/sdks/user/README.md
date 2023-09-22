@@ -35,7 +35,11 @@ import(
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.CreateUserForm(ctx, shared.User{
@@ -88,7 +92,11 @@ import(
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.CreateUserJSON(ctx, shared.User{
@@ -141,10 +149,14 @@ import(
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
-    res, err := s.User.CreateUserRaw(ctx, []byte("ipsum"))
+    res, err := s.User.CreateUserRaw(ctx, []byte("natus"))
     if err != nil {
         log.Fatal(err)
     }
@@ -185,7 +197,11 @@ import(
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.CreateUsersWithListInput(ctx, []shared.User{
@@ -236,15 +252,20 @@ import(
 	"context"
 	"log"
 	"petstore"
+	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.DeleteUser(ctx, operations.DeleteUserRequest{
-        Username: "Keshaun32",
+        Username: "Gertrude_Welch44",
     })
     if err != nil {
         log.Fatal(err)
@@ -282,15 +303,20 @@ import(
 	"context"
 	"log"
 	"petstore"
+	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.GetUserByName(ctx, operations.GetUserByNameRequest{
-        Username: "Lia.Cormier",
+        Username: "Floy_Moore",
     })
     if err != nil {
         log.Fatal(err)
@@ -328,16 +354,21 @@ import(
 	"context"
 	"log"
 	"petstore"
+	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.LoginUser(ctx, operations.LoginUserRequest{
-        Password: petstore.String("natus"),
-        Username: petstore.String("Gertrude_Welch44"),
+        Password: petstore.String("quidem"),
+        Username: petstore.String("Baby_Beier65"),
     })
     if err != nil {
         log.Fatal(err)
@@ -375,10 +406,15 @@ import(
 	"context"
 	"log"
 	"petstore"
+	"petstore/pkg/models/shared"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.LogoutUser(ctx)
@@ -417,12 +453,16 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/operations"
 	"petstore/pkg/models/shared"
+	"petstore/pkg/models/operations"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.UpdateUserForm(ctx, operations.UpdateUserFormRequest{
@@ -436,7 +476,7 @@ func main() {
             UserStatus: petstore.Int(1),
             Username: petstore.String("theUser"),
         },
-        Username: "Floy_Moore",
+        Username: "Marcos35",
     })
     if err != nil {
         log.Fatal(err)
@@ -474,12 +514,16 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/operations"
 	"petstore/pkg/models/shared"
+	"petstore/pkg/models/operations"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.UpdateUserJSON(ctx, operations.UpdateUserJSONRequest{
@@ -493,7 +537,7 @@ func main() {
             UserStatus: petstore.Int(1),
             Username: petstore.String("theUser"),
         },
-        Username: "Maxie96",
+        Username: "Braulio60",
     })
     if err != nil {
         log.Fatal(err)
@@ -531,17 +575,21 @@ import(
 	"context"
 	"log"
 	"petstore"
-	"petstore/pkg/models/operations"
 	"petstore/pkg/models/shared"
+	"petstore/pkg/models/operations"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.User.UpdateUserRaw(ctx, operations.UpdateUserRawRequest{
-        RequestBody: []byte("est"),
-        Username: "Madaline21",
+        RequestBody: []byte("nemo"),
+        Username: "Era43",
     })
     if err != nil {
         log.Fatal(err)

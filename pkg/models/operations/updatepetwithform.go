@@ -6,17 +6,6 @@ import (
 	"net/http"
 )
 
-type UpdatePetWithFormSecurity struct {
-	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
-}
-
-func (o *UpdatePetWithFormSecurity) GetPetstoreAuth() string {
-	if o == nil {
-		return ""
-	}
-	return o.PetstoreAuth
-}
-
 type UpdatePetWithFormRequest struct {
 	// Name of pet that needs to be updated
 	Name *string `queryParam:"style=form,explode=true,name=name"`

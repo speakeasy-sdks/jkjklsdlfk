@@ -5,6 +5,7 @@ package petstore
 import (
 	"fmt"
 	"net/http"
+	"petstore/pkg/models/shared"
 	"petstore/pkg/utils"
 	"time"
 )
@@ -38,9 +39,9 @@ func Float32(f float32) *float32 { return &f }
 func Float64(f float64) *float64 { return &f }
 
 type sdkConfiguration struct {
-	DefaultClient  HTTPClient
-	SecurityClient HTTPClient
-
+	DefaultClient     HTTPClient
+	SecurityClient    HTTPClient
+	Security          *shared.Security
 	ServerURL         string
 	ServerIndex       int
 	Language          string
@@ -121,6 +122,13 @@ func WithClient(client HTTPClient) SDKOption {
 	}
 }
 
+// WithSecurity configures the SDK to use the provided security details
+func WithSecurity(security shared.Security) SDKOption {
+	return func(sdk *Petstore) {
+		sdk.sdkConfiguration.Security = &security
+	}
+}
+
 func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
 	return func(sdk *Petstore) {
 		sdk.sdkConfiguration.RetryConfig = &retryConfig
@@ -133,8 +141,8 @@ func New(opts ...SDKOption) *Petstore {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.17",
-			SDKVersion:        "1.4.1",
-			GenVersion:        "2.118.1",
+			SDKVersion:        "1.5.0",
+			GenVersion:        "2.125.1",
 		},
 	}
 	for _, opt := range opts {
@@ -146,7 +154,11 @@ func New(opts ...SDKOption) *Petstore {
 		sdk.sdkConfiguration.DefaultClient = &http.Client{Timeout: 60 * time.Second}
 	}
 	if sdk.sdkConfiguration.SecurityClient == nil {
-		sdk.sdkConfiguration.SecurityClient = sdk.sdkConfiguration.DefaultClient
+		if sdk.sdkConfiguration.Security != nil {
+			sdk.sdkConfiguration.SecurityClient = utils.ConfigureSecurityClient(sdk.sdkConfiguration.DefaultClient, sdk.sdkConfiguration.Security)
+		} else {
+			sdk.sdkConfiguration.SecurityClient = sdk.sdkConfiguration.DefaultClient
+		}
 	}
 
 	sdk.Pet = newPet(sdk.sdkConfiguration)

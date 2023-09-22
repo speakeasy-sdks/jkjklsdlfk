@@ -10,17 +10,6 @@ import (
 	"petstore/pkg/utils"
 )
 
-type FindPetsByStatusSecurity struct {
-	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
-}
-
-func (o *FindPetsByStatusSecurity) GetPetstoreAuth() string {
-	if o == nil {
-		return ""
-	}
-	return o.PetstoreAuth
-}
-
 // FindPetsByStatusStatus - Status values that need to be considered for filter
 type FindPetsByStatusStatus string
 

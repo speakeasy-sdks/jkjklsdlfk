@@ -7,17 +7,6 @@ import (
 	"petstore/pkg/models/shared"
 )
 
-type UpdatePetRawSecurity struct {
-	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
-}
-
-func (o *UpdatePetRawSecurity) GetPetstoreAuth() string {
-	if o == nil {
-		return ""
-	}
-	return o.PetstoreAuth
-}
-
 type UpdatePetRawResponse struct {
 	Body        []byte
 	ContentType string

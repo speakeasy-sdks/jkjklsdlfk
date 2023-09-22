@@ -6,17 +6,6 @@ import (
 	"net/http"
 )
 
-type DeletePetSecurity struct {
-	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
-}
-
-func (o *DeletePetSecurity) GetPetstoreAuth() string {
-	if o == nil {
-		return ""
-	}
-	return o.PetstoreAuth
-}
-
 type DeletePetRequest struct {
 	APIKey *string `header:"style=simple,explode=false,name=api_key"`
 	// Pet id to delete

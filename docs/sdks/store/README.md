@@ -28,15 +28,20 @@ import(
 	"context"
 	"log"
 	"petstore"
+	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.Store.DeleteOrder(ctx, operations.DeleteOrderRequest{
-        OrderID: 414662,
+        OrderID: 135218,
     })
     if err != nil {
         log.Fatal(err)
@@ -121,15 +126,20 @@ import(
 	"context"
 	"log"
 	"petstore"
+	"petstore/pkg/models/shared"
 	"petstore/pkg/models/operations"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.Store.GetOrderByID(ctx, operations.GetOrderByIDRequest{
-        OrderID: 473600,
+        OrderID: 18789,
     })
     if err != nil {
         log.Fatal(err)
@@ -172,7 +182,11 @@ import(
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.Store.PlaceOrderForm(ctx, shared.Order{
@@ -180,7 +194,7 @@ func main() {
         ID: petstore.Int64(10),
         PetID: petstore.Int64(198772),
         Quantity: petstore.Int(7),
-        ShipDate: types.MustTimeFromString("2022-10-24T23:43:42.369Z"),
+        ShipDate: types.MustTimeFromString("2022-05-20T13:30:46.463Z"),
         Status: shared.OrderStatusApproved.ToPointer(),
     })
     if err != nil {
@@ -224,7 +238,11 @@ import(
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
     res, err := s.Store.PlaceOrderJSON(ctx, shared.Order{
@@ -232,7 +250,7 @@ func main() {
         ID: petstore.Int64(10),
         PetID: petstore.Int64(198772),
         Quantity: petstore.Int(7),
-        ShipDate: types.MustTimeFromString("2020-10-16T01:47:24.760Z"),
+        ShipDate: types.MustTimeFromString("2022-05-22T14:02:28.908Z"),
         Status: shared.OrderStatusApproved.ToPointer(),
     })
     if err != nil {
@@ -276,10 +294,14 @@ import(
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(shared.Security{
+            PetstoreAuth: "",
+        }),
+    )
 
     ctx := context.Background()
-    res, err := s.Store.PlaceOrderRaw(ctx, []byte("esse"))
+    res, err := s.Store.PlaceOrderRaw(ctx, []byte("dolor"))
     if err != nil {
         log.Fatal(err)
     }

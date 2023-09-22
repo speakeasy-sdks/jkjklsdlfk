@@ -30,7 +30,7 @@ func newPet(sdkConfig sdkConfiguration) *pet {
 
 // AddPetForm - Add a new pet to the store
 // Add a new pet to the store
-func (s *pet) AddPetForm(ctx context.Context, request shared.Pet, security operations.AddPetFormSecurity, opts ...operations.Option) (*operations.AddPetFormResponse, error) {
+func (s *pet) AddPetForm(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.AddPetFormResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -66,7 +66,7 @@ func (s *pet) AddPetForm(ctx context.Context, request shared.Pet, security opera
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -113,7 +113,7 @@ func (s *pet) AddPetForm(ctx context.Context, request shared.Pet, security opera
 
 // AddPetJSON - Add a new pet to the store
 // Add a new pet to the store
-func (s *pet) AddPetJSON(ctx context.Context, request shared.Pet, security operations.AddPetJSONSecurity, opts ...operations.Option) (*operations.AddPetJSONResponse, error) {
+func (s *pet) AddPetJSON(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.AddPetJSONResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -149,7 +149,7 @@ func (s *pet) AddPetJSON(ctx context.Context, request shared.Pet, security opera
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -196,7 +196,7 @@ func (s *pet) AddPetJSON(ctx context.Context, request shared.Pet, security opera
 
 // AddPetRaw - Add a new pet to the store
 // Add a new pet to the store
-func (s *pet) AddPetRaw(ctx context.Context, request []byte, security operations.AddPetRawSecurity, opts ...operations.Option) (*operations.AddPetRawResponse, error) {
+func (s *pet) AddPetRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.AddPetRawResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -232,7 +232,7 @@ func (s *pet) AddPetRaw(ctx context.Context, request []byte, security operations
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -278,7 +278,7 @@ func (s *pet) AddPetRaw(ctx context.Context, request []byte, security operations
 }
 
 // DeletePet - Deletes a pet
-func (s *pet) DeletePet(ctx context.Context, request operations.DeletePetRequest, security operations.DeletePetSecurity) (*operations.DeletePetResponse, error) {
+func (s *pet) DeletePet(ctx context.Context, request operations.DeletePetRequest) (*operations.DeletePetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/pet/{petId}", request, nil)
 	if err != nil {
@@ -294,7 +294,7 @@ func (s *pet) DeletePet(ctx context.Context, request operations.DeletePetRequest
 
 	utils.PopulateHeaders(ctx, req, request)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -327,7 +327,7 @@ func (s *pet) DeletePet(ctx context.Context, request operations.DeletePetRequest
 
 // FindPetsByStatus - Finds Pets by status
 // Multiple status values can be provided with comma separated strings
-func (s *pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsByStatusRequest, security operations.FindPetsByStatusSecurity, opts ...operations.Option) (*operations.FindPetsByStatusResponse, error) {
+func (s *pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsByStatusRequest, opts ...operations.Option) (*operations.FindPetsByStatusResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -357,7 +357,7 @@ func (s *pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsB
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -404,7 +404,7 @@ func (s *pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsB
 
 // FindPetsByTags - Finds Pets by tags
 // Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-func (s *pet) FindPetsByTags(ctx context.Context, request operations.FindPetsByTagsRequest, security operations.FindPetsByTagsSecurity, opts ...operations.Option) (*operations.FindPetsByTagsResponse, error) {
+func (s *pet) FindPetsByTags(ctx context.Context, request operations.FindPetsByTagsRequest, opts ...operations.Option) (*operations.FindPetsByTagsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -434,7 +434,7 @@ func (s *pet) FindPetsByTags(ctx context.Context, request operations.FindPetsByT
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -558,7 +558,7 @@ func (s *pet) GetPetByID(ctx context.Context, request operations.GetPetByIDReque
 }
 
 // UpdatePetWithForm - Updates a pet in the store with form data
-func (s *pet) UpdatePetWithForm(ctx context.Context, request operations.UpdatePetWithFormRequest, security operations.UpdatePetWithFormSecurity) (*operations.UpdatePetWithFormResponse, error) {
+func (s *pet) UpdatePetWithForm(ctx context.Context, request operations.UpdatePetWithFormRequest) (*operations.UpdatePetWithFormResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/pet/{petId}", request, nil)
 	if err != nil {
@@ -576,7 +576,7 @@ func (s *pet) UpdatePetWithForm(ctx context.Context, request operations.UpdatePe
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -609,7 +609,7 @@ func (s *pet) UpdatePetWithForm(ctx context.Context, request operations.UpdatePe
 
 // UpdatePetForm - Update an existing pet
 // Update an existing pet by Id
-func (s *pet) UpdatePetForm(ctx context.Context, request shared.Pet, security operations.UpdatePetFormSecurity, opts ...operations.Option) (*operations.UpdatePetFormResponse, error) {
+func (s *pet) UpdatePetForm(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.UpdatePetFormResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -645,7 +645,7 @@ func (s *pet) UpdatePetForm(ctx context.Context, request shared.Pet, security op
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -696,7 +696,7 @@ func (s *pet) UpdatePetForm(ctx context.Context, request shared.Pet, security op
 
 // UpdatePetJSON - Update an existing pet
 // Update an existing pet by Id
-func (s *pet) UpdatePetJSON(ctx context.Context, request shared.Pet, security operations.UpdatePetJSONSecurity, opts ...operations.Option) (*operations.UpdatePetJSONResponse, error) {
+func (s *pet) UpdatePetJSON(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.UpdatePetJSONResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -732,7 +732,7 @@ func (s *pet) UpdatePetJSON(ctx context.Context, request shared.Pet, security op
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -783,7 +783,7 @@ func (s *pet) UpdatePetJSON(ctx context.Context, request shared.Pet, security op
 
 // UpdatePetRaw - Update an existing pet
 // Update an existing pet by Id
-func (s *pet) UpdatePetRaw(ctx context.Context, request []byte, security operations.UpdatePetRawSecurity, opts ...operations.Option) (*operations.UpdatePetRawResponse, error) {
+func (s *pet) UpdatePetRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.UpdatePetRawResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -819,7 +819,7 @@ func (s *pet) UpdatePetRaw(ctx context.Context, request []byte, security operati
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -869,7 +869,7 @@ func (s *pet) UpdatePetRaw(ctx context.Context, request []byte, security operati
 }
 
 // UploadFile - uploads an image
-func (s *pet) UploadFile(ctx context.Context, request operations.UploadFileRequest, security operations.UploadFileSecurity) (*operations.UploadFileResponse, error) {
+func (s *pet) UploadFile(ctx context.Context, request operations.UploadFileRequest) (*operations.UploadFileResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/pet/{petId}/uploadImage", request, nil)
 	if err != nil {
@@ -894,7 +894,7 @@ func (s *pet) UploadFile(ctx context.Context, request operations.UploadFileReque
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
