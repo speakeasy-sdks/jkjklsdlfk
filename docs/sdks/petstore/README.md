@@ -1,5 +1,6 @@
 # Petstore SDK
 
+
 ## Overview
 
 Swagger Petstore - OpenAPI 3.0: This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about

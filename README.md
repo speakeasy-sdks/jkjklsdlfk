@@ -36,13 +36,13 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "vel",
+            "yellow",
         },
-        Status: shared.PetStatusPending.ToPointer(),
+        Status: shared.PetStatusSold.ToPointer(),
         Tags: []shared.Tag{
             shared.Tag{
-                ID: petstore.Int64(645894),
-                Name: petstore.String("Willie Gulgowski DVM"),
+                ID: petstore.Int64(837177),
+                Name: petstore.String("North Awesome"),
             },
         },
     })
@@ -104,8 +104,6 @@ func main() {
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
 
 
@@ -118,8 +116,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `nil`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 

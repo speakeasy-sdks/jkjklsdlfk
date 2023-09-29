@@ -1,4 +1,5 @@
 # User
+(*User*)
 
 ## Overview
 
@@ -156,7 +157,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.User.CreateUserRaw(ctx, []byte("natus"))
+    res, err := s.User.CreateUserRaw(ctx, []byte("i5Xui)x^_Y"))
     if err != nil {
         log.Fatal(err)
     }
@@ -265,7 +266,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.DeleteUser(ctx, operations.DeleteUserRequest{
-        Username: "Gertrude_Welch44",
+        Username: "Demetris_Torphy",
     })
     if err != nil {
         log.Fatal(err)
@@ -316,7 +317,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.GetUserByName(ctx, operations.GetUserByNameRequest{
-        Username: "Floy_Moore",
+        Username: "Zachery_Schneider",
     })
     if err != nil {
         log.Fatal(err)
@@ -367,8 +368,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.LoginUser(ctx, operations.LoginUserRequest{
-        Password: petstore.String("quidem"),
-        Username: petstore.String("Baby_Beier65"),
+        Password: petstore.String("ksPrq3dzBQkU6Le"),
+        Username: petstore.String("Edwin_Gleason"),
     })
     if err != nil {
         log.Fatal(err)
@@ -476,7 +477,7 @@ func main() {
             UserStatus: petstore.Int(1),
             Username: petstore.String("theUser"),
         },
-        Username: "Marcos35",
+        Username: "Bo_Lynch4",
     })
     if err != nil {
         log.Fatal(err)
@@ -537,7 +538,7 @@ func main() {
             UserStatus: petstore.Int(1),
             Username: petstore.String("theUser"),
         },
-        Username: "Braulio60",
+        Username: "Alanna_Waters81",
     })
     if err != nil {
         log.Fatal(err)
@@ -588,8 +589,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.UpdateUserRaw(ctx, operations.UpdateUserRawRequest{
-        RequestBody: []byte("nemo"),
-        Username: "Era43",
+        RequestBody: []byte("b4q0<\{RD/"),
+        Username: "Eleonore2",
     })
     if err != nil {
         log.Fatal(err)

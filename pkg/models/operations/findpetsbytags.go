@@ -20,11 +20,14 @@ func (o *FindPetsByTagsRequest) GetTags() []string {
 }
 
 type FindPetsByTagsResponse struct {
-	Body        []byte
+	Body []byte
+	// HTTP response content type for this operation
 	ContentType string
 	// successful operation
-	Pets        []shared.Pet
-	StatusCode  int
+	Pets []shared.Pet
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 
