@@ -13,7 +13,7 @@ go get github.com/speakeasy-sdks/jkjklsdlfk
 ```go
 package main
 
-import(
+import (
 	"context"
 	"log"
 	"petstore"
@@ -21,35 +21,34 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(shared.Security{
-            PetstoreAuth: "",
-        }),
-    )
+	s := petstore.New(
+		petstore.WithSecurity(""),
+	)
 
-    ctx := context.Background()
-    res, err := s.Pet.AddPetForm(ctx, shared.Pet{
-        Category: &shared.Category{
-            ID: petstore.Int64(1),
-            Name: petstore.String("Dogs"),
-        },
-        ID: petstore.Int64(10),
-        Name: "doggie",
-        PhotoUrls: []string{
-            "yellow",
-        },
-        Tags: []shared.Tag{
-            shared.Tag{},
-        },
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
+		ID:   petstore.Int64(10),
+		Name: "doggie",
+		PhotoUrls: []string{
+			"yellow",
+		},
+		Tags: []shared.Tag{
+			shared.Tag{},
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    if res.Pet != nil {
-        // handle response
-    }
+	if res.Pet != nil {
+		// handle response
+	}
 }
+
 ```
 <!-- End SDK Example Usage -->
 

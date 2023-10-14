@@ -35,9 +35,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(shared.Security{
-            PetstoreAuth: "",
-        }),
+        petstore.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -85,9 +83,9 @@ import(
 
 func main() {
     s := petstore.New()
-    operationSecurity := operations.GetInventorySecurity{
-            APIKey: "",
-        }
+
+
+    operationSecurity := ""
 
     ctx := context.Background()
     res, err := s.Store.GetInventory(ctx, operationSecurity)
@@ -133,9 +131,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(shared.Security{
-            PetstoreAuth: "",
-        }),
+        petstore.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -183,9 +179,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(shared.Security{
-            PetstoreAuth: "",
-        }),
+        petstore.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -236,9 +230,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(shared.Security{
-            PetstoreAuth: "",
-        }),
+        petstore.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -289,9 +281,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(shared.Security{
-            PetstoreAuth: "",
-        }),
+        petstore.WithSecurity(""),
     )
 
     ctx := context.Background()
