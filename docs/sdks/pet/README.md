@@ -52,7 +52,7 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "yellow",
+            "string",
         },
         Tags: []shared.Tag{
             shared.Tag{},
@@ -111,7 +111,7 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "male",
+            "string",
         },
         Tags: []shared.Tag{
             shared.Tag{},
@@ -307,7 +307,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Pet.FindPetsByTags(ctx, operations.FindPetsByTagsRequest{
         Tags: []string{
-            "engage",
+            "string",
         },
     })
     if err != nil {
@@ -464,7 +464,7 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "Associate",
+            "string",
         },
         Tags: []shared.Tag{
             shared.Tag{},
@@ -523,7 +523,7 @@ func main() {
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
-            "engage",
+            "string",
         },
         Tags: []shared.Tag{
             shared.Tag{},

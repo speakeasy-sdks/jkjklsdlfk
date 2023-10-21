@@ -103,3 +103,13 @@ Based on:
 - [go v1.7.1] .
 ### Releases
 - [Go v1.7.1] https://github.com/speakeasy-sdks/jkjklsdlfk/releases/tag/v1.7.1 - .
+
+## 2023-10-21 00:52:46
+### Changes
+Based on:
+- OpenAPI Doc 1.0.17 
+- Speakeasy CLI 1.104.0 (2.169.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v1.8.0] .
+### Releases
+- [Go v1.8.0] https://github.com/speakeasy-sdks/jkjklsdlfk/releases/tag/v1.8.0 - .
