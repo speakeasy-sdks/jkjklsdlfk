@@ -1,5 +1,5 @@
 # User
-(*User*)
+(*.User*)
 
 ## Overview
 
@@ -31,8 +31,8 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -86,8 +86,8 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -141,8 +141,8 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -151,7 +151,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.User.CreateUserRaw(ctx, &[]byte("i5Xui)x^_Y"))
+    res, err := s.User.CreateUserRaw(ctx, &[]byte("0xB4dDB1Eeed"))
     if err != nil {
         log.Fatal(err)
     }
@@ -187,8 +187,8 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -244,9 +244,9 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
@@ -293,9 +293,9 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
@@ -342,9 +342,9 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
@@ -358,7 +358,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.LoginUser200ApplicationJSONString != nil {
+    if res.TwoHundredApplicationJSONRes != nil {
         // handle response
     }
 }
@@ -389,8 +389,8 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -434,9 +434,9 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
@@ -493,9 +493,9 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
@@ -552,9 +552,9 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
@@ -564,7 +564,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.UpdateUserRaw(ctx, operations.UpdateUserRawRequest{
-        RequestBody: []byte("b4q0<\{RD/"),
+        RequestBody: []byte("0xf4D36eFb83"),
         Username: "Eleonore2",
     })
     if err != nil {

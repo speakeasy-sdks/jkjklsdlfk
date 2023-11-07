@@ -6,24 +6,24 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/utils"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/utils"
 )
 
-// FindPetsByStatusStatus - Status values that need to be considered for filter
-type FindPetsByStatusStatus string
+// Status values that need to be considered for filter
+type Status string
 
 const (
-	FindPetsByStatusStatusAvailable FindPetsByStatusStatus = "available"
-	FindPetsByStatusStatusPending   FindPetsByStatusStatus = "pending"
-	FindPetsByStatusStatusSold      FindPetsByStatusStatus = "sold"
+	StatusAvailable Status = "available"
+	StatusPending   Status = "pending"
+	StatusSold      Status = "sold"
 )
 
-func (e FindPetsByStatusStatus) ToPointer() *FindPetsByStatusStatus {
+func (e Status) ToPointer() *Status {
 	return &e
 }
 
-func (e *FindPetsByStatusStatus) UnmarshalJSON(data []byte) error {
+func (e *Status) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -34,16 +34,16 @@ func (e *FindPetsByStatusStatus) UnmarshalJSON(data []byte) error {
 	case "pending":
 		fallthrough
 	case "sold":
-		*e = FindPetsByStatusStatus(v)
+		*e = Status(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindPetsByStatusStatus: %v", v)
+		return fmt.Errorf("invalid value for Status: %v", v)
 	}
 }
 
 type FindPetsByStatusRequest struct {
 	// Status values that need to be considered for filter
-	Status *FindPetsByStatusStatus `default:"available" queryParam:"style=form,explode=true,name=status"`
+	Status *Status `default:"available" queryParam:"style=form,explode=true,name=status"`
 }
 
 func (f FindPetsByStatusRequest) MarshalJSON() ([]byte, error) {
@@ -57,7 +57,7 @@ func (f *FindPetsByStatusRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FindPetsByStatusRequest) GetStatus() *FindPetsByStatusStatus {
+func (o *FindPetsByStatusRequest) GetStatus() *Status {
 	if o == nil {
 		return nil
 	}
@@ -65,15 +65,22 @@ func (o *FindPetsByStatusRequest) GetStatus() *FindPetsByStatusStatus {
 }
 
 type FindPetsByStatusResponse struct {
-	Body []byte
+	// successful operation
+	TwoHundredApplicationJSONClasses []shared.Pet
+	Body                             []byte
 	// HTTP response content type for this operation
 	ContentType string
-	// successful operation
-	Pets []shared.Pet
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *FindPetsByStatusResponse) GetTwoHundredApplicationJSONClasses() []shared.Pet {
+	if o == nil {
+		return nil
+	}
+	return o.TwoHundredApplicationJSONClasses
 }
 
 func (o *FindPetsByStatusResponse) GetBody() []byte {
@@ -88,13 +95,6 @@ func (o *FindPetsByStatusResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *FindPetsByStatusResponse) GetPets() []shared.Pet {
-	if o == nil {
-		return nil
-	}
-	return o.Pets
 }
 
 func (o *FindPetsByStatusResponse) GetStatusCode() int {

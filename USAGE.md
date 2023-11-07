@@ -7,8 +7,8 @@ package main
 import (
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {

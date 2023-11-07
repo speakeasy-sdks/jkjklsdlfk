@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"petstore/pkg/models/shared"
+	"petstore/v2/pkg/models/shared"
 )
 
 type CreateUserFormResponse struct {

@@ -4,7 +4,7 @@ package operations
 
 import (
 	"errors"
-	"petstore/pkg/utils"
+	"petstore/v2/pkg/utils"
 )
 
 var ErrUnsupportedOption = errors.New("unsupported option")

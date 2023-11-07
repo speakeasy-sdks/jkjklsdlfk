@@ -25,7 +25,7 @@ type GetInventoryResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// successful operation
-	GetInventory200ApplicationJSONObject map[string]int
+	Object map[string]int
 }
 
 func (o *GetInventoryResponse) GetContentType() string {
@@ -49,9 +49,9 @@ func (o *GetInventoryResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetInventoryResponse) GetGetInventory200ApplicationJSONObject() map[string]int {
+func (o *GetInventoryResponse) GetObject() map[string]int {
 	if o == nil {
 		return nil
 	}
-	return o.GetInventory200ApplicationJSONObject
+	return o.Object
 }

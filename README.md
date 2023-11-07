@@ -16,8 +16,8 @@ package main
 import (
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -56,7 +56,7 @@ func main() {
 ## Available Resources and Operations
 
 
-### [Pet](docs/sdks/pet/README.md)
+### [.Pet](docs/sdks/pet/README.md)
 
 * [AddPetForm](docs/sdks/pet/README.md#addpetform) - Add a new pet to the store
 * [AddPetJSON](docs/sdks/pet/README.md#addpetjson) - Add a new pet to the store
@@ -71,7 +71,7 @@ func main() {
 * [UpdatePetRaw](docs/sdks/pet/README.md#updatepetraw) - Update an existing pet
 * [UploadFile](docs/sdks/pet/README.md#uploadfile) - uploads an image
 
-### [Store](docs/sdks/store/README.md)
+### [.Store](docs/sdks/store/README.md)
 
 * [DeleteOrder](docs/sdks/store/README.md#deleteorder) - Delete purchase order by ID
 * [GetInventory](docs/sdks/store/README.md#getinventory) - Returns pet inventories by status
@@ -80,7 +80,7 @@ func main() {
 * [PlaceOrderJSON](docs/sdks/store/README.md#placeorderjson) - Place an order for a pet
 * [PlaceOrderRaw](docs/sdks/store/README.md#placeorderraw) - Place an order for a pet
 
-### [User](docs/sdks/user/README.md)
+### [.User](docs/sdks/user/README.md)
 
 * [CreateUserForm](docs/sdks/user/README.md#createuserform) - Create user
 * [CreateUserJSON](docs/sdks/user/README.md#createuserjson) - Create user
@@ -118,6 +118,246 @@ Here's an example of one such pagination call:
 <!-- Start Go Types -->
 
 <!-- End Go Types -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally using the `WithServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https:///api/v3` | None |
+
+For example:
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+)
+
+func main() {
+	s := petstore.New(
+		petstore.WithServerIndex(0),
+		petstore.WithSecurity(""),
+	)
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
+		ID:   petstore.Int64(10),
+		Name: "doggie",
+		PhotoUrls: []string{
+			"string",
+		},
+		Tags: []shared.Tag{
+			shared.Tag{},
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Pet != nil {
+		// handle response
+	}
+}
+
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+)
+
+func main() {
+	s := petstore.New(
+		petstore.WithServerURL("https:///api/v3"),
+		petstore.WithSecurity(""),
+	)
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
+		ID:   petstore.Int64(10),
+		Name: "doggie",
+		PhotoUrls: []string{
+			"string",
+		},
+		Tags: []shared.Tag{
+			shared.Tag{},
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Pet != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Go SDK makes API calls that wrap an internal HTTP client. The requirements for the HTTP client are very simple. It must match this interface:
+
+```go
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+```
+
+The built-in `net/http` client satisfies this interface and a default client based on the built-in is provided by default. To replace this default with a client of your own, you can implement this interface yourself or provide your own client configured as desired. Here's a simple example, which adds a client with a 30 second timeout.
+
+```go
+import (
+	"net/http"
+	"time"
+	"github.com/myorg/your-go-sdk"
+)
+
+var (
+	httpClient = &http.Client{Timeout: 30 * time.Second}
+	sdkClient  = sdk.New(sdk.WithClient(httpClient))
+)
+```
+
+This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
+<!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name           | Type           | Scheme         |
+| -------------- | -------------- | -------------- |
+| `PetstoreAuth` | oauth2         | OAuth2 token   |
+
+You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+)
+
+func main() {
+	s := petstore.New(
+		petstore.WithSecurity(""),
+	)
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
+		ID:   petstore.Int64(10),
+		Name: "doggie",
+		PhotoUrls: []string{
+			"string",
+		},
+		Tags: []shared.Tag{
+			shared.Tag{},
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Pet != nil {
+		// handle response
+	}
+}
+
+```
+
+## Per-Operation Security Schemes
+
+Some operations in your SDK require the security scheme to be specified at the request level. For example:
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/operations"
+)
+
+func main() {
+	s := petstore.New()
+
+	operationSecurity := operations.GetPetByIDSecurity{
+		APIKey: petstore.String(""),
+	}
+
+	ctx := context.Background()
+	res, err := s.Pet.GetPetByID(ctx, operations.GetPetByIDRequest{
+		PetID: 504151,
+	}, operationSecurity)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Pet != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

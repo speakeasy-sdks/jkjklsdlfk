@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"petstore/pkg/models/shared"
+	"petstore/v2/pkg/models/shared"
 )
 
 type FindPetsByTagsRequest struct {
@@ -20,15 +20,22 @@ func (o *FindPetsByTagsRequest) GetTags() []string {
 }
 
 type FindPetsByTagsResponse struct {
-	Body []byte
+	// successful operation
+	TwoHundredApplicationJSONClasses []shared.Pet
+	Body                             []byte
 	// HTTP response content type for this operation
 	ContentType string
-	// successful operation
-	Pets []shared.Pet
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *FindPetsByTagsResponse) GetTwoHundredApplicationJSONClasses() []shared.Pet {
+	if o == nil {
+		return nil
+	}
+	return o.TwoHundredApplicationJSONClasses
 }
 
 func (o *FindPetsByTagsResponse) GetBody() []byte {
@@ -43,13 +50,6 @@ func (o *FindPetsByTagsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *FindPetsByTagsResponse) GetPets() []shared.Pet {
-	if o == nil {
-		return nil
-	}
-	return o.Pets
 }
 
 func (o *FindPetsByTagsResponse) GetStatusCode() int {

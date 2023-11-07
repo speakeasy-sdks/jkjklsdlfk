@@ -1,5 +1,5 @@
 # Store
-(*Store*)
+(*.Store*)
 
 ## Overview
 
@@ -28,9 +28,9 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
@@ -77,15 +77,17 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
     s := petstore.New()
 
 
-    operationSecurity := ""
+    operationSecurity := operations.GetInventorySecurity{
+            APIKey: "",
+        }
 
     ctx := context.Background()
     res, err := s.Store.GetInventory(ctx, operationSecurity)
@@ -93,7 +95,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.GetInventory200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -124,9 +126,9 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/models/operations"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/models/operations"
 )
 
 func main() {
@@ -173,8 +175,8 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -187,7 +189,7 @@ func main() {
         ID: petstore.Int64(10),
         PetID: petstore.Int64(198772),
         Quantity: petstore.Int(7),
-        Status: shared.OrderStatusApproved.ToPointer(),
+        Status: shared.StatusApproved.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -224,8 +226,8 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -238,7 +240,7 @@ func main() {
         ID: petstore.Int64(10),
         PetID: petstore.Int64(198772),
         Quantity: petstore.Int(7),
-        Status: shared.OrderStatusApproved.ToPointer(),
+        Status: shared.StatusApproved.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -275,8 +277,8 @@ package main
 import(
 	"context"
 	"log"
-	"petstore"
-	"petstore/pkg/models/shared"
+	petstore "petstore/v2"
+	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -285,7 +287,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Store.PlaceOrderRaw(ctx, &[]byte("UlJXn(4[x^"))
+    res, err := s.Store.PlaceOrderRaw(ctx, &[]byte("0xcB9dC14dEe"))
     if err != nil {
         log.Fatal(err)
     }

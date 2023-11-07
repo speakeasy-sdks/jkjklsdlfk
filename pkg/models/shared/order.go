@@ -5,24 +5,24 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"petstore/pkg/utils"
+	"petstore/v2/pkg/utils"
 	"time"
 )
 
-// OrderStatus - Order Status
-type OrderStatus string
+// Order Status
+type Status string
 
 const (
-	OrderStatusPlaced    OrderStatus = "placed"
-	OrderStatusApproved  OrderStatus = "approved"
-	OrderStatusDelivered OrderStatus = "delivered"
+	StatusPlaced    Status = "placed"
+	StatusApproved  Status = "approved"
+	StatusDelivered Status = "delivered"
 )
 
-func (e OrderStatus) ToPointer() *OrderStatus {
+func (e Status) ToPointer() *Status {
 	return &e
 }
 
-func (e *OrderStatus) UnmarshalJSON(data []byte) error {
+func (e *Status) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,10 +33,10 @@ func (e *OrderStatus) UnmarshalJSON(data []byte) error {
 	case "approved":
 		fallthrough
 	case "delivered":
-		*e = OrderStatus(v)
+		*e = Status(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for OrderStatus: %v", v)
+		return fmt.Errorf("invalid value for Status: %v", v)
 	}
 }
 
@@ -47,7 +47,7 @@ type Order struct {
 	Quantity *int       `json:"quantity,omitempty" form:"name=quantity"`
 	ShipDate *time.Time `json:"shipDate,omitempty" form:"name=shipDate"`
 	// Order Status
-	Status *OrderStatus `json:"status,omitempty" form:"name=status"`
+	Status *Status `json:"status,omitempty" form:"name=status"`
 }
 
 func (o Order) MarshalJSON() ([]byte, error) {
@@ -96,7 +96,7 @@ func (o *Order) GetShipDate() *time.Time {
 	return o.ShipDate
 }
 
-func (o *Order) GetStatus() *OrderStatus {
+func (o *Order) GetStatus() *Status {
 	if o == nil {
 		return nil
 	}

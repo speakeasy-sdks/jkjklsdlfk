@@ -8,29 +8,29 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"petstore/pkg/models/operations"
-	"petstore/pkg/models/sdkerrors"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/utils"
+	"petstore/v2/pkg/models/operations"
+	"petstore/v2/pkg/models/sdkerrors"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/utils"
 	"strings"
 )
 
-// pet - Everything about your Pets
+// Pet - Everything about your Pets
 //
 // http://swagger.io - Find out more
-type pet struct {
+type Pet struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newPet(sdkConfig sdkConfiguration) *pet {
-	return &pet{
+func newPet(sdkConfig sdkConfiguration) *Pet {
+	return &Pet{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // AddPetForm - Add a new pet to the store
 // Add a new pet to the store
-func (s *pet) AddPetForm(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.AddPetFormResponse, error) {
+func (s *Pet) AddPetForm(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.AddPetFormResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -106,6 +106,11 @@ func (s *pet) AddPetForm(ctx context.Context, request shared.Pet, opts ...operat
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -113,7 +118,7 @@ func (s *pet) AddPetForm(ctx context.Context, request shared.Pet, opts ...operat
 
 // AddPetJSON - Add a new pet to the store
 // Add a new pet to the store
-func (s *pet) AddPetJSON(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.AddPetJSONResponse, error) {
+func (s *Pet) AddPetJSON(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.AddPetJSONResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -189,6 +194,11 @@ func (s *pet) AddPetJSON(ctx context.Context, request shared.Pet, opts ...operat
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -196,7 +206,7 @@ func (s *pet) AddPetJSON(ctx context.Context, request shared.Pet, opts ...operat
 
 // AddPetRaw - Add a new pet to the store
 // Add a new pet to the store
-func (s *pet) AddPetRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.AddPetRawResponse, error) {
+func (s *Pet) AddPetRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.AddPetRawResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -272,13 +282,18 @@ func (s *pet) AddPetRaw(ctx context.Context, request []byte, opts ...operations.
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 405:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
 }
 
 // DeletePet - Deletes a pet
-func (s *pet) DeletePet(ctx context.Context, request operations.DeletePetRequest) (*operations.DeletePetResponse, error) {
+func (s *Pet) DeletePet(ctx context.Context, request operations.DeletePetRequest) (*operations.DeletePetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/pet/{petId}", request, nil)
 	if err != nil {
@@ -320,6 +335,11 @@ func (s *pet) DeletePet(ctx context.Context, request operations.DeletePetRequest
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
 	case httpRes.StatusCode == 400:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -327,7 +347,7 @@ func (s *pet) DeletePet(ctx context.Context, request operations.DeletePetRequest
 
 // FindPetsByStatus - Finds Pets by status
 // Multiple status values can be provided with comma separated strings
-func (s *pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsByStatusRequest, opts ...operations.Option) (*operations.FindPetsByStatusResponse, error) {
+func (s *Pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsByStatusRequest, opts ...operations.Option) (*operations.FindPetsByStatusResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -390,13 +410,18 @@ func (s *pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsB
 				return nil, err
 			}
 
-			res.Pets = out
+			res.TwoHundredApplicationJSONClasses = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -404,7 +429,7 @@ func (s *pet) FindPetsByStatus(ctx context.Context, request operations.FindPetsB
 
 // FindPetsByTags - Finds Pets by tags
 // Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-func (s *pet) FindPetsByTags(ctx context.Context, request operations.FindPetsByTagsRequest, opts ...operations.Option) (*operations.FindPetsByTagsResponse, error) {
+func (s *Pet) FindPetsByTags(ctx context.Context, request operations.FindPetsByTagsRequest, opts ...operations.Option) (*operations.FindPetsByTagsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -467,13 +492,18 @@ func (s *pet) FindPetsByTags(ctx context.Context, request operations.FindPetsByT
 				return nil, err
 			}
 
-			res.Pets = out
+			res.TwoHundredApplicationJSONClasses = out
 		case utils.MatchContentType(contentType, `application/xml`):
 			res.Body = rawBody
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -481,7 +511,7 @@ func (s *pet) FindPetsByTags(ctx context.Context, request operations.FindPetsByT
 
 // GetPetByID - Find pet by ID
 // Returns a single pet
-func (s *pet) GetPetByID(ctx context.Context, request operations.GetPetByIDRequest, security operations.GetPetByIDSecurity, opts ...operations.Option) (*operations.GetPetByIDResponse, error) {
+func (s *Pet) GetPetByID(ctx context.Context, request operations.GetPetByIDRequest, security operations.GetPetByIDSecurity, opts ...operations.Option) (*operations.GetPetByIDResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -552,13 +582,18 @@ func (s *pet) GetPetByID(ctx context.Context, request operations.GetPetByIDReque
 	case httpRes.StatusCode == 400:
 		fallthrough
 	case httpRes.StatusCode == 404:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
 }
 
 // UpdatePetWithForm - Updates a pet in the store with form data
-func (s *pet) UpdatePetWithForm(ctx context.Context, request operations.UpdatePetWithFormRequest) (*operations.UpdatePetWithFormResponse, error) {
+func (s *Pet) UpdatePetWithForm(ctx context.Context, request operations.UpdatePetWithFormRequest) (*operations.UpdatePetWithFormResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/pet/{petId}", request, nil)
 	if err != nil {
@@ -602,6 +637,11 @@ func (s *pet) UpdatePetWithForm(ctx context.Context, request operations.UpdatePe
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
 	case httpRes.StatusCode == 405:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -609,7 +649,7 @@ func (s *pet) UpdatePetWithForm(ctx context.Context, request operations.UpdatePe
 
 // UpdatePetForm - Update an existing pet
 // Update an existing pet by Id
-func (s *pet) UpdatePetForm(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.UpdatePetFormResponse, error) {
+func (s *Pet) UpdatePetForm(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.UpdatePetFormResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -689,6 +729,11 @@ func (s *pet) UpdatePetForm(ctx context.Context, request shared.Pet, opts ...ope
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode == 405:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -696,7 +741,7 @@ func (s *pet) UpdatePetForm(ctx context.Context, request shared.Pet, opts ...ope
 
 // UpdatePetJSON - Update an existing pet
 // Update an existing pet by Id
-func (s *pet) UpdatePetJSON(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.UpdatePetJSONResponse, error) {
+func (s *Pet) UpdatePetJSON(ctx context.Context, request shared.Pet, opts ...operations.Option) (*operations.UpdatePetJSONResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -776,6 +821,11 @@ func (s *pet) UpdatePetJSON(ctx context.Context, request shared.Pet, opts ...ope
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode == 405:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -783,7 +833,7 @@ func (s *pet) UpdatePetJSON(ctx context.Context, request shared.Pet, opts ...ope
 
 // UpdatePetRaw - Update an existing pet
 // Update an existing pet by Id
-func (s *pet) UpdatePetRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.UpdatePetRawResponse, error) {
+func (s *Pet) UpdatePetRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.UpdatePetRawResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -863,13 +913,18 @@ func (s *pet) UpdatePetRaw(ctx context.Context, request []byte, opts ...operatio
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode == 405:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
 }
 
 // UploadFile - uploads an image
-func (s *pet) UploadFile(ctx context.Context, request operations.UploadFileRequest) (*operations.UploadFileResponse, error) {
+func (s *Pet) UploadFile(ctx context.Context, request operations.UploadFileRequest) (*operations.UploadFileResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/pet/{petId}/uploadImage", request, nil)
 	if err != nil {
@@ -931,6 +986,10 @@ func (s *pet) UploadFile(ctx context.Context, request operations.UploadFileReque
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

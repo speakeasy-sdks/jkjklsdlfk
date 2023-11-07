@@ -8,27 +8,27 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"petstore/pkg/models/operations"
-	"petstore/pkg/models/sdkerrors"
-	"petstore/pkg/models/shared"
-	"petstore/pkg/utils"
+	"petstore/v2/pkg/models/operations"
+	"petstore/v2/pkg/models/sdkerrors"
+	"petstore/v2/pkg/models/shared"
+	"petstore/v2/pkg/utils"
 	"strings"
 )
 
-// user - Operations about user
-type user struct {
+// User - Operations about user
+type User struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newUser(sdkConfig sdkConfiguration) *user {
-	return &user{
+func newUser(sdkConfig sdkConfiguration) *User {
+	return &User{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // CreateUserForm - Create user
 // This can only be done by the logged in user.
-func (s *user) CreateUserForm(ctx context.Context, request *shared.User, opts ...operations.Option) (*operations.CreateUserFormResponse, error) {
+func (s *User) CreateUserForm(ctx context.Context, request *shared.User, opts ...operations.Option) (*operations.CreateUserFormResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -86,6 +86,10 @@ func (s *user) CreateUserForm(ctx context.Context, request *shared.User, opts ..
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -107,7 +111,7 @@ func (s *user) CreateUserForm(ctx context.Context, request *shared.User, opts ..
 
 // CreateUserJSON - Create user
 // This can only be done by the logged in user.
-func (s *user) CreateUserJSON(ctx context.Context, request *shared.User, opts ...operations.Option) (*operations.CreateUserJSONResponse, error) {
+func (s *User) CreateUserJSON(ctx context.Context, request *shared.User, opts ...operations.Option) (*operations.CreateUserJSONResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -165,6 +169,10 @@ func (s *user) CreateUserJSON(ctx context.Context, request *shared.User, opts ..
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -186,7 +194,7 @@ func (s *user) CreateUserJSON(ctx context.Context, request *shared.User, opts ..
 
 // CreateUserRaw - Create user
 // This can only be done by the logged in user.
-func (s *user) CreateUserRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.CreateUserRawResponse, error) {
+func (s *User) CreateUserRaw(ctx context.Context, request []byte, opts ...operations.Option) (*operations.CreateUserRawResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -244,6 +252,10 @@ func (s *user) CreateUserRaw(ctx context.Context, request []byte, opts ...operat
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -265,7 +277,7 @@ func (s *user) CreateUserRaw(ctx context.Context, request []byte, opts ...operat
 
 // CreateUsersWithListInput - Creates list of users with given input array
 // Creates list of users with given input array
-func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.User, opts ...operations.Option) (*operations.CreateUsersWithListInputResponse, error) {
+func (s *User) CreateUsersWithListInput(ctx context.Context, request []shared.User, opts ...operations.Option) (*operations.CreateUsersWithListInputResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -337,6 +349,10 @@ func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.Us
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 	}
 
@@ -345,7 +361,7 @@ func (s *user) CreateUsersWithListInput(ctx context.Context, request []shared.Us
 
 // DeleteUser - Delete user
 // This can only be done by the logged in user.
-func (s *user) DeleteUser(ctx context.Context, request operations.DeleteUserRequest) (*operations.DeleteUserResponse, error) {
+func (s *User) DeleteUser(ctx context.Context, request operations.DeleteUserRequest) (*operations.DeleteUserResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/user/{username}", request, nil)
 	if err != nil {
@@ -387,13 +403,18 @@ func (s *user) DeleteUser(ctx context.Context, request operations.DeleteUserRequ
 	case httpRes.StatusCode == 400:
 		fallthrough
 	case httpRes.StatusCode == 404:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
 }
 
 // GetUserByName - Get user by user name
-func (s *user) GetUserByName(ctx context.Context, request operations.GetUserByNameRequest, opts ...operations.Option) (*operations.GetUserByNameResponse, error) {
+func (s *User) GetUserByName(ctx context.Context, request operations.GetUserByNameRequest, opts ...operations.Option) (*operations.GetUserByNameResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -464,13 +485,18 @@ func (s *user) GetUserByName(ctx context.Context, request operations.GetUserByNa
 	case httpRes.StatusCode == 400:
 		fallthrough
 	case httpRes.StatusCode == 404:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
 }
 
 // LoginUser - Logs user into the system
-func (s *user) LoginUser(ctx context.Context, request operations.LoginUserRequest, opts ...operations.Option) (*operations.LoginUserResponse, error) {
+func (s *User) LoginUser(ctx context.Context, request operations.LoginUserRequest, opts ...operations.Option) (*operations.LoginUserResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,
@@ -531,21 +557,26 @@ func (s *user) LoginUser(ctx context.Context, request operations.LoginUserReques
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
-			res.LoginUser200ApplicationJSONString = &out
+			res.TwoHundredApplicationJSONRes = &out
 		case utils.MatchContentType(contentType, `application/xml`):
 			out := string(rawBody)
-			res.LoginUser200ApplicationXMLString = &out
+			res.TwoHundredApplicationXMLRes = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
+		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
 }
 
 // LogoutUser - Logs out current logged in user session
-func (s *user) LogoutUser(ctx context.Context) (*operations.LogoutUserResponse, error) {
+func (s *User) LogoutUser(ctx context.Context) (*operations.LogoutUserResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user/logout"
 
@@ -581,6 +612,10 @@ func (s *user) LogoutUser(ctx context.Context) (*operations.LogoutUserResponse, 
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 	}
 
@@ -589,7 +624,7 @@ func (s *user) LogoutUser(ctx context.Context) (*operations.LogoutUserResponse, 
 
 // UpdateUserForm - Update user
 // This can only be done by the logged in user.
-func (s *user) UpdateUserForm(ctx context.Context, request operations.UpdateUserFormRequest) (*operations.UpdateUserFormResponse, error) {
+func (s *User) UpdateUserForm(ctx context.Context, request operations.UpdateUserFormRequest) (*operations.UpdateUserFormResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/user/{username}", request, nil)
 	if err != nil {
@@ -635,6 +670,10 @@ func (s *user) UpdateUserForm(ctx context.Context, request operations.UpdateUser
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 	}
 
@@ -643,7 +682,7 @@ func (s *user) UpdateUserForm(ctx context.Context, request operations.UpdateUser
 
 // UpdateUserJSON - Update user
 // This can only be done by the logged in user.
-func (s *user) UpdateUserJSON(ctx context.Context, request operations.UpdateUserJSONRequest) (*operations.UpdateUserJSONResponse, error) {
+func (s *User) UpdateUserJSON(ctx context.Context, request operations.UpdateUserJSONRequest) (*operations.UpdateUserJSONResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/user/{username}", request, nil)
 	if err != nil {
@@ -689,6 +728,10 @@ func (s *user) UpdateUserJSON(ctx context.Context, request operations.UpdateUser
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 	}
 
@@ -697,7 +740,7 @@ func (s *user) UpdateUserJSON(ctx context.Context, request operations.UpdateUser
 
 // UpdateUserRaw - Update user
 // This can only be done by the logged in user.
-func (s *user) UpdateUserRaw(ctx context.Context, request operations.UpdateUserRawRequest) (*operations.UpdateUserRawResponse, error) {
+func (s *User) UpdateUserRaw(ctx context.Context, request operations.UpdateUserRawRequest) (*operations.UpdateUserRawResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/user/{username}", request, nil)
 	if err != nil {
@@ -743,6 +786,10 @@ func (s *user) UpdateUserRaw(ctx context.Context, request operations.UpdateUserR
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 	switch {
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 	}
 
