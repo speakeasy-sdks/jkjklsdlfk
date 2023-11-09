@@ -1,4 +1,4 @@
-# CreateUserJSONResponse
+# CreateUserRawResponse
 
 
 ## Fields
@@ -9,4 +9,4 @@
 | `ContentType`                                           | *string*                                                | :heavy_check_mark:                                      | HTTP response content type for this operation           |
 | `StatusCode`                                            | *int*                                                   | :heavy_check_mark:                                      | HTTP response status code for this operation            |
 | `RawResponse`                                           | [*http.Response](https://pkg.go.dev/net/http#Response)  | :heavy_minus_sign:                                      | Raw HTTP response; suitable for custom response parsing |
-| `User`                                                  | [*shared.User](../../models/shared/user.md)             | :heavy_minus_sign:                                      | successful operation                                    |
+| `User`                                                  | [*shared.User](../../../pkg/models/shared/user.md)      | :heavy_minus_sign:                                      | successful operation                                    |

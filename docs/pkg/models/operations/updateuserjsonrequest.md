@@ -1,0 +1,9 @@
+# UpdateUserJSONRequest
+
+
+## Fields
+
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `User`                                             | [*shared.User](../../../pkg/models/shared/user.md) | :heavy_minus_sign:                                 | Update an existent user in the store               |
+| `Username`                                         | *string*                                           | :heavy_check_mark:                                 | name that need to be deleted                       |

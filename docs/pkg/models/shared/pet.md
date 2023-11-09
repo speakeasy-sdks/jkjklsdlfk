@@ -1,0 +1,13 @@
+# Pet
+
+
+## Fields
+
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `Category`                                                   | [*shared.Category](../../../pkg/models/shared/category.md)   | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
+| `ID`                                                         | **int64*                                                     | :heavy_minus_sign:                                           | N/A                                                          | 10                                                           |
+| `Name`                                                       | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | doggie                                                       |
+| `PhotoUrls`                                                  | []*string*                                                   | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `Status`                                                     | [*shared.PetStatus](../../../pkg/models/shared/petstatus.md) | :heavy_minus_sign:                                           | pet status in the store                                      |                                                              |
+| `Tags`                                                       | [][shared.Tag](../../../pkg/models/shared/tag.md)            | :heavy_minus_sign:                                           | N/A                                                          |                                                              |
