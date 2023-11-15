@@ -39,9 +39,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.AddPetForm(ctx, shared.Pet{
@@ -100,9 +98,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.AddPetJSON(ctx, shared.Pet{
@@ -161,9 +157,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.AddPetRaw(ctx, []byte("0xcf5E85CDde"))
@@ -210,9 +204,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.DeletePet(ctx, operations.DeletePetRequest{
@@ -261,9 +253,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.FindPetsByStatus(ctx, operations.FindPetsByStatusRequest{})
@@ -310,9 +300,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.FindPetsByTags(ctx, operations.FindPetsByTagsRequest{
@@ -417,9 +405,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetWithForm(ctx, operations.UpdatePetWithFormRequest{
@@ -467,9 +453,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetForm(ctx, shared.Pet{
@@ -528,9 +512,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetJSON(ctx, shared.Pet{
@@ -589,9 +571,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetRaw(ctx, []byte("0x6bCA76De67"))
@@ -638,9 +618,7 @@ import(
 )
 
 func main() {
-    s := petstore.New(
-        petstore.WithSecurity(""),
-    )
+    s := petstore.New()
 
     ctx := context.Background()
     res, err := s.Pet.UploadFile(ctx, operations.UploadFileRequest{

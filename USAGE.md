@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```go
 package main
 
@@ -12,9 +10,7 @@ import (
 )
 
 func main() {
-	s := petstore.New(
-		petstore.WithSecurity(""),
-	)
+	s := petstore.New()
 
 	ctx := context.Background()
 	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
