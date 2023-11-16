@@ -64,7 +64,7 @@ func (o *LoginUserResponse) GetContentType() string {
 
 func (o *LoginUserResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

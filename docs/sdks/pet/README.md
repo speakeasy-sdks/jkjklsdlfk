@@ -32,14 +32,16 @@ Add a new pet to the store
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.AddPetForm(ctx, shared.Pet{
@@ -91,14 +93,16 @@ Add a new pet to the store
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.AddPetJSON(ctx, shared.Pet{
@@ -150,14 +154,16 @@ Add a new pet to the store
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.AddPetRaw(ctx, []byte("0xcf5E85CDde"))
@@ -196,15 +202,18 @@ Deletes a pet
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
+	"net/http"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.DeletePet(ctx, operations.DeletePetRequest{
@@ -245,15 +254,17 @@ Multiple status values can be provided with comma separated strings
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.FindPetsByStatus(ctx, operations.FindPetsByStatusRequest{})
@@ -292,15 +303,17 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.FindPetsByTags(ctx, operations.FindPetsByTagsRequest{
@@ -343,10 +356,10 @@ Returns a single pet
 package main
 
 import(
-	"context"
-	"log"
 	petstore "petstore/v2"
 	"petstore/v2/pkg/models/operations"
+	"context"
+	"log"
 )
 
 func main() {
@@ -397,15 +410,18 @@ Updates a pet in the store with form data
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
+	"net/http"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetWithForm(ctx, operations.UpdatePetWithFormRequest{
@@ -446,14 +462,16 @@ Update an existing pet by Id
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetForm(ctx, shared.Pet{
@@ -505,14 +523,16 @@ Update an existing pet by Id
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetJSON(ctx, shared.Pet{
@@ -564,14 +584,16 @@ Update an existing pet by Id
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetRaw(ctx, []byte("0x6bCA76De67"))
@@ -610,15 +632,17 @@ uploads an image
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
-    s := petstore.New()
+    s := petstore.New(
+        petstore.WithSecurity(""),
+    )
 
     ctx := context.Background()
     res, err := s.Pet.UploadFile(ctx, operations.UploadFileRequest{

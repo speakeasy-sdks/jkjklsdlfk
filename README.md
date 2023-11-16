@@ -23,7 +23,9 @@ import (
 )
 
 func main() {
-	s := petstore.New()
+	s := petstore.New(
+		petstore.WithSecurity(""),
+	)
 
 	ctx := context.Background()
 	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
@@ -137,13 +139,17 @@ package main
 
 import (
 	"context"
+	"errors"
 	"log"
 	petstore "petstore/v2"
+	"petstore/v2/pkg/models/sdkerrors"
 	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
-	s := petstore.New()
+	s := petstore.New(
+		petstore.WithSecurity(""),
+	)
 
 	ctx := context.Background()
 	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
@@ -201,6 +207,7 @@ import (
 func main() {
 	s := petstore.New(
 		petstore.WithServerIndex(0),
+		petstore.WithSecurity(""),
 	)
 
 	ctx := context.Background()
@@ -246,6 +253,7 @@ import (
 func main() {
 	s := petstore.New(
 		petstore.WithServerURL("https:///api/v3"),
+		petstore.WithSecurity(""),
 	)
 
 	ctx := context.Background()

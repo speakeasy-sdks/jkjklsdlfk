@@ -29,10 +29,11 @@ This can only be done by the logged in user.
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -86,10 +87,11 @@ This can only be done by the logged in user.
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -143,10 +145,11 @@ This can only be done by the logged in user.
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -191,10 +194,10 @@ Creates list of users with given input array
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
 )
 
 func main() {
@@ -250,11 +253,12 @@ This can only be done by the logged in user.
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -301,11 +305,11 @@ Get user by user name
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -352,11 +356,11 @@ Logs user into the system
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -401,10 +405,11 @@ Logs out current logged in user session
 package main
 
 import(
+	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
 	"context"
 	"log"
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/shared"
+	"net/http"
 )
 
 func main() {
@@ -448,11 +453,12 @@ This can only be done by the logged in user.
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -509,11 +515,12 @@ This can only be done by the logged in user.
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -570,11 +577,12 @@ This can only be done by the logged in user.
 package main
 
 import(
-	"context"
-	"log"
-	petstore "petstore/v2"
 	"petstore/v2/pkg/models/shared"
+	petstore "petstore/v2"
+	"context"
 	"petstore/v2/pkg/models/operations"
+	"log"
+	"net/http"
 )
 
 func main() {

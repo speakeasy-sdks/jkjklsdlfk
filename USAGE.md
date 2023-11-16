@@ -10,7 +10,9 @@ import (
 )
 
 func main() {
-	s := petstore.New()
+	s := petstore.New(
+		petstore.WithSecurity(""),
+	)
 
 	ctx := context.Background()
 	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
