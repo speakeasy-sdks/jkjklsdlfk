@@ -57,7 +57,6 @@ pkg/utils/utils.go
 /pkg/models/shared/order.go
 /pkg/models/shared/user.go
 /pkg/models/shared/security.go
-USAGE.md
 docs/pkg/models/operations/addpetformresponse.md
 docs/pkg/models/operations/addpetjsonresponse.md
 docs/pkg/models/operations/addpetrawresponse.md
@@ -117,5 +116,6 @@ docs/sdks/petstore/README.md
 docs/sdks/pet/README.md
 docs/sdks/store/README.md
 docs/sdks/user/README.md
+USAGE.md
 pkg/models/operations/options.go
 .gitattributes
