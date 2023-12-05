@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 8288fd395d61164b2aa55a65c51cce27
   docVersion: 1.0.17
-  speakeasyVersion: 1.123.0
-  generationVersion: 2.202.2
+  speakeasyVersion: 1.125.1
+  generationVersion: 2.210.3
 generation:
   comments: {}
   sdkClassName: petstore
@@ -12,13 +12,13 @@ generation:
     optionalPropertyRendering: withExample
 features:
   go:
-    constsAndDefaults: 0.1.1
+    constsAndDefaults: 0.1.2
     core: 3.1.5
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.1
     methodSecurity: 2.82.1
 go:
-  version: 2.0.4
+  version: 2.0.5
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
