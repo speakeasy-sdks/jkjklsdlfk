@@ -3,12 +3,12 @@
 package shared
 
 type Security struct {
-	PetstoreAuth string `security:"scheme,type=oauth2,name=Authorization"`
+	PetstoreAuth *string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
-func (o *Security) GetPetstoreAuth() string {
+func (o *Security) GetPetstoreAuth() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.PetstoreAuth
 }

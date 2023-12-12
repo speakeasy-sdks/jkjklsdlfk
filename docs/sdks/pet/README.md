@@ -40,7 +40,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -101,7 +101,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -162,7 +162,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -212,7 +212,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -263,7 +263,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -312,7 +312,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -367,7 +367,7 @@ func main() {
 
 
     operationSecurity := operations.GetPetByIDSecurity{
-            APIKey: petstore.String(""),
+            APIKey: petstore.String("<YOUR_API_KEY_HERE>"),
         }
 
     ctx := context.Background()
@@ -420,7 +420,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -470,7 +470,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -531,7 +531,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -592,7 +592,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
@@ -641,7 +641,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity(""),
+        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
     )
 
     ctx := context.Background()

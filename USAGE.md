@@ -11,7 +11,7 @@ import (
 
 func main() {
 	s := petstore.New(
-		petstore.WithSecurity(""),
+		petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
 	)
 
 	ctx := context.Background()

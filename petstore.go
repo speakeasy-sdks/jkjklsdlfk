@@ -131,10 +131,9 @@ func withSecurity(security interface{}) func(context.Context) (interface{}, erro
 }
 
 // WithSecurity configures the SDK to use the provided security details
-
 func WithSecurity(petstoreAuth string) SDKOption {
 	return func(sdk *Petstore) {
-		security := shared.Security{PetstoreAuth: petstoreAuth}
+		security := shared.Security{PetstoreAuth: &petstoreAuth}
 		sdk.sdkConfiguration.Security = withSecurity(&security)
 	}
 }
@@ -151,9 +150,9 @@ func New(opts ...SDKOption) *Petstore {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.17",
-			SDKVersion:        "2.0.5",
-			GenVersion:        "2.210.3",
-			UserAgent:         "speakeasy-sdk/go 2.0.5 2.210.3 1.0.17 petstore",
+			SDKVersion:        "2.1.0",
+			GenVersion:        "2.213.3",
+			UserAgent:         "speakeasy-sdk/go 2.1.0 2.213.3 1.0.17 petstore",
 		},
 	}
 	for _, opt := range opts {
