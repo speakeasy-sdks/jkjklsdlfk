@@ -81,7 +81,7 @@ func main() {
 **[*operations.AddPetFormResponse](../../pkg/models/operations/addpetformresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## AddPetJSON
 
@@ -142,7 +142,7 @@ func main() {
 **[*operations.AddPetJSONResponse](../../pkg/models/operations/addpetjsonresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## AddPetRaw
 
@@ -190,7 +190,7 @@ func main() {
 **[*operations.AddPetRawResponse](../../pkg/models/operations/addpetrawresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeletePet
 
@@ -242,7 +242,7 @@ func main() {
 **[*operations.DeletePetResponse](../../pkg/models/operations/deletepetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FindPetsByStatus
 
@@ -291,7 +291,7 @@ func main() {
 **[*operations.FindPetsByStatusResponse](../../pkg/models/operations/findpetsbystatusresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FindPetsByTags
 
@@ -344,7 +344,7 @@ func main() {
 **[*operations.FindPetsByTagsResponse](../../pkg/models/operations/findpetsbytagsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetPetByID
 
@@ -398,7 +398,7 @@ func main() {
 **[*operations.GetPetByIDResponse](../../pkg/models/operations/getpetbyidresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdatePetWithForm
 
@@ -450,7 +450,7 @@ func main() {
 **[*operations.UpdatePetWithFormResponse](../../pkg/models/operations/updatepetwithformresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdatePetForm
 
@@ -511,7 +511,7 @@ func main() {
 **[*operations.UpdatePetFormResponse](../../pkg/models/operations/updatepetformresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdatePetJSON
 
@@ -572,7 +572,7 @@ func main() {
 **[*operations.UpdatePetJSONResponse](../../pkg/models/operations/updatepetjsonresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdatePetRaw
 
@@ -620,7 +620,7 @@ func main() {
 **[*operations.UpdatePetRawResponse](../../pkg/models/operations/updatepetrawresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UploadFile
 
@@ -672,4 +672,4 @@ func main() {
 **[*operations.UploadFileResponse](../../pkg/models/operations/uploadfileresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

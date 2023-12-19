@@ -66,7 +66,7 @@ func main() {
 **[*operations.DeleteOrderResponse](../../pkg/models/operations/deleteorderresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetInventory
 
@@ -117,7 +117,7 @@ func main() {
 **[*operations.GetInventoryResponse](../../pkg/models/operations/getinventoryresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetOrderByID
 
@@ -168,7 +168,7 @@ func main() {
 **[*operations.GetOrderByIDResponse](../../pkg/models/operations/getorderbyidresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PlaceOrderForm
 
@@ -221,7 +221,7 @@ func main() {
 **[*operations.PlaceOrderFormResponse](../../pkg/models/operations/placeorderformresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PlaceOrderJSON
 
@@ -274,7 +274,7 @@ func main() {
 **[*operations.PlaceOrderJSONResponse](../../pkg/models/operations/placeorderjsonresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PlaceOrderRaw
 
@@ -322,4 +322,4 @@ func main() {
 **[*operations.PlaceOrderRawResponse](../../pkg/models/operations/placeorderrawresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
