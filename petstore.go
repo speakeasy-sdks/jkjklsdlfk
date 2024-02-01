@@ -138,6 +138,15 @@ func WithSecurity(petstoreAuth string) SDKOption {
 	}
 }
 
+// WithSecuritySource configures the SDK to invoke the Security Source function on each method call to determine authentication
+func WithSecuritySource(security func(context.Context) (shared.Security, error)) SDKOption {
+	return func(sdk *Petstore) {
+		sdk.sdkConfiguration.Security = func(ctx context.Context) (interface{}, error) {
+			return security(ctx)
+		}
+	}
+}
+
 func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
 	return func(sdk *Petstore) {
 		sdk.sdkConfiguration.RetryConfig = &retryConfig
@@ -150,9 +159,9 @@ func New(opts ...SDKOption) *Petstore {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.17",
-			SDKVersion:        "2.1.3",
-			GenVersion:        "2.237.2",
-			UserAgent:         "speakeasy-sdk/go 2.1.3 2.237.2 1.0.17 petstore",
+			SDKVersion:        "2.1.4",
+			GenVersion:        "2.245.1",
+			UserAgent:         "speakeasy-sdk/go 2.1.4 2.245.1 1.0.17 petstore",
 		},
 	}
 	for _, opt := range opts {
