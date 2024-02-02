@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"petstore/v2/pkg/models/shared"
+	"petstore/v3/pkg/models/shared"
 )
 
 type UpdatePetJSONResponse struct {

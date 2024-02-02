@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"petstore/v2/pkg/models/operations"
-	"petstore/v2/pkg/models/sdkerrors"
-	"petstore/v2/pkg/models/shared"
-	"petstore/v2/pkg/utils"
+	"petstore/v3/pkg/models/operations"
+	"petstore/v3/pkg/models/sdkerrors"
+	"petstore/v3/pkg/models/shared"
+	"petstore/v3/pkg/utils"
 	"strings"
 )
 

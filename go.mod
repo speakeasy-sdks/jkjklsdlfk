@@ -1,4 +1,4 @@
-module petstore/v2
+module petstore/v3
 
 go 1.20
 

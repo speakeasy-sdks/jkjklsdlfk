@@ -26,10 +26,10 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 package main
 
 import(
-	"petstore/v2/pkg/models/shared"
-	petstore "petstore/v2"
+	"petstore/v3/pkg/models/shared"
+	petstore "petstore/v3"
 	"context"
-	"petstore/v2/pkg/models/operations"
+	"petstore/v3/pkg/models/operations"
 	"log"
 	"net/http"
 )
@@ -78,8 +78,8 @@ Returns a map of status codes to quantities
 package main
 
 import(
-	petstore "petstore/v2"
-	"petstore/v2/pkg/models/operations"
+	petstore "petstore/v3"
+	"petstore/v3/pkg/models/operations"
 	"context"
 	"log"
 )
@@ -129,10 +129,10 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 package main
 
 import(
-	"petstore/v2/pkg/models/shared"
-	petstore "petstore/v2"
+	"petstore/v3/pkg/models/shared"
+	petstore "petstore/v3"
 	"context"
-	"petstore/v2/pkg/models/operations"
+	"petstore/v3/pkg/models/operations"
 	"log"
 )
 
@@ -180,8 +180,8 @@ Place a new order in the store
 package main
 
 import(
-	"petstore/v2/pkg/models/shared"
-	petstore "petstore/v2"
+	"petstore/v3/pkg/models/shared"
+	petstore "petstore/v3"
 	"context"
 	"log"
 )
@@ -233,8 +233,8 @@ Place a new order in the store
 package main
 
 import(
-	"petstore/v2/pkg/models/shared"
-	petstore "petstore/v2"
+	"petstore/v3/pkg/models/shared"
+	petstore "petstore/v3"
 	"context"
 	"log"
 )
@@ -286,8 +286,8 @@ Place a new order in the store
 package main
 
 import(
-	"petstore/v2/pkg/models/shared"
-	petstore "petstore/v2"
+	"petstore/v3/pkg/models/shared"
+	petstore "petstore/v3"
 	"context"
 	"log"
 )

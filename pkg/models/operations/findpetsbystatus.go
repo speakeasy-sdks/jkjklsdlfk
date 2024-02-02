@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"petstore/v2/pkg/models/shared"
-	"petstore/v2/pkg/utils"
+	"petstore/v3/pkg/models/shared"
+	"petstore/v3/pkg/utils"
 )
 
 // Status values that need to be considered for filter

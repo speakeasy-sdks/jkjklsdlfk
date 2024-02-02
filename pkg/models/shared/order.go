@@ -5,7 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"petstore/v2/pkg/utils"
+	"petstore/v3/pkg/utils"
 	"time"
 )
 

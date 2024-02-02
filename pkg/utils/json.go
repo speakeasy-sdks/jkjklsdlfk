@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"petstore/v2/pkg/types"
+	"petstore/v3/pkg/types"
 
 	"github.com/ericlagergren/decimal"
 )
