@@ -298,7 +298,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Store.PlaceOrderRaw(ctx, &[]byte("0xcB9dC14dEe"))
+    res, err := s.Store.PlaceOrderRaw(ctx, []byte("0xcB9dC14dEe"))
     if err != nil {
         log.Fatal(err)
     }

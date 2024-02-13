@@ -45,17 +45,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.AddPetForm(ctx, shared.Pet{
-        Category: &shared.Category{
-            ID: petstore.Int64(1),
-            Name: petstore.String("Dogs"),
-        },
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
             "string",
-        },
-        Tags: []shared.Tag{
-            shared.Tag{},
         },
     })
     if err != nil {
@@ -106,17 +99,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.AddPetJSON(ctx, shared.Pet{
-        Category: &shared.Category{
-            ID: petstore.Int64(1),
-            Name: petstore.String("Dogs"),
-        },
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
             "string",
-        },
-        Tags: []shared.Tag{
-            shared.Tag{},
         },
     })
     if err != nil {
@@ -316,11 +302,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Pet.FindPetsByTags(ctx, operations.FindPetsByTagsRequest{
-        Tags: []string{
-            "string",
-        },
-    })
+    res, err := s.Pet.FindPetsByTags(ctx, operations.FindPetsByTagsRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -475,17 +457,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetForm(ctx, shared.Pet{
-        Category: &shared.Category{
-            ID: petstore.Int64(1),
-            Name: petstore.String("Dogs"),
-        },
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
             "string",
-        },
-        Tags: []shared.Tag{
-            shared.Tag{},
         },
     })
     if err != nil {
@@ -536,17 +511,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.UpdatePetJSON(ctx, shared.Pet{
-        Category: &shared.Category{
-            ID: petstore.Int64(1),
-            Name: petstore.String("Dogs"),
-        },
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
             "string",
-        },
-        Tags: []shared.Tag{
-            shared.Tag{},
         },
     })
     if err != nil {
@@ -646,8 +614,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pet.UploadFile(ctx, operations.UploadFileRequest{
-        RequestBody: []byte("0xc7cca7F47D"),
-        PetID: 621158,
+        PetID: 565380,
     })
     if err != nil {
         log.Fatal(err)

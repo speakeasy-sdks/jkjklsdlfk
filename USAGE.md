@@ -16,17 +16,10 @@ func main() {
 
 	ctx := context.Background()
 	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
-		Category: &shared.Category{
-			ID:   petstore.Int64(1),
-			Name: petstore.String("Dogs"),
-		},
 		ID:   petstore.Int64(10),
 		Name: "doggie",
 		PhotoUrls: []string{
 			"string",
-		},
-		Tags: []shared.Tag{
-			shared.Tag{},
 		},
 	})
 	if err != nil {
