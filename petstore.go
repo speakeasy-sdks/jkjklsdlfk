@@ -6,6 +6,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"petstore/v3/internal/hooks"
 	"petstore/v3/pkg/models/shared"
 	"petstore/v3/pkg/utils"
 	"time"
@@ -51,6 +52,7 @@ type sdkConfiguration struct {
 	GenVersion        string
 	UserAgent         string
 	RetryConfig       *utils.RetryConfig
+	Hooks             *hooks.Hooks
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -159,14 +161,17 @@ func New(opts ...SDKOption) *Petstore {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.17",
-			SDKVersion:        "3.0.2",
-			GenVersion:        "2.253.0",
-			UserAgent:         "speakeasy-sdk/go 3.0.2 2.253.0 1.0.17 petstore",
+			SDKVersion:        "3.1.0",
+			GenVersion:        "2.258.2",
+			UserAgent:         "speakeasy-sdk/go 3.1.0 2.258.2 1.0.17 petstore",
+			Hooks:             hooks.New(),
 		},
 	}
 	for _, opt := range opts {
 		opt(sdk)
 	}
+
+	sdk.sdkConfiguration.DefaultClient = sdk.sdkConfiguration.Hooks.ClientInit(sdk.sdkConfiguration.DefaultClient)
 
 	// Use WithClient to override the default client if you would like to customize the timeout
 	if sdk.sdkConfiguration.DefaultClient == nil {
