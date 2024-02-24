@@ -4,9 +4,9 @@ management:
   docChecksum: 8288fd395d61164b2aa55a65c51cce27
   docVersion: 1.0.17
   speakeasyVersion: internal
-  generationVersion: 2.263.3
-  releaseVersion: 3.1.1
-  configChecksum: 4479632a30f6da454574746744521d07
+  generationVersion: 2.272.4
+  releaseVersion: 3.1.2
+  configChecksum: 17176303cd08eae76391400bd2eaaf23
   repoURL: https://github.com/speakeasy-sdks/jkjklsdlfk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/jkjklsdlfk
@@ -14,8 +14,8 @@ management:
 features:
   go:
     constsAndDefaults: 0.1.3
-    core: 3.4.1
-    globalSecurity: 2.82.6
+    core: 3.4.3
+    globalSecurity: 2.82.7
     globalServerURLs: 2.82.1
     methodSecurity: 2.82.2
 generatedFiles:
