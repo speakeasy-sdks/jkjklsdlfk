@@ -33,7 +33,6 @@ import(
 	petstore "petstore/v3"
 	"context"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -55,8 +54,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -91,7 +89,6 @@ import(
 	petstore "petstore/v3"
 	"context"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -113,8 +110,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -149,7 +145,6 @@ import(
 	petstore "petstore/v3"
 	"context"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -162,8 +157,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -221,7 +215,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.User != nil {
         // handle response
     }
@@ -258,7 +251,6 @@ import(
 	"context"
 	"petstore/v3/pkg/models/operations"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -273,8 +265,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -324,7 +315,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.User != nil {
         // handle response
     }
@@ -373,8 +363,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.TwoHundredApplicationJSONRes != nil {
+    if res.String != nil {
         // handle response
     }
 }
@@ -409,7 +398,6 @@ import(
 	petstore "petstore/v3"
 	"context"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -422,8 +410,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -458,7 +445,6 @@ import(
 	"context"
 	"petstore/v3/pkg/models/operations"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -473,8 +459,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -510,7 +495,6 @@ import(
 	"context"
 	"petstore/v3/pkg/models/operations"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -525,8 +509,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -562,7 +545,6 @@ import(
 	"context"
 	"petstore/v3/pkg/models/operations"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -577,8 +559,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }

@@ -54,7 +54,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Pet != nil {
         // handle response
     }
@@ -108,7 +107,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Pet != nil {
         // handle response
     }
@@ -156,7 +154,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Pet != nil {
         // handle response
     }
@@ -193,7 +190,6 @@ import(
 	"context"
 	"petstore/v3/pkg/models/operations"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -208,8 +204,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -257,7 +252,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.TwoHundredApplicationJSONClasses != nil {
         // handle response
     }
@@ -306,7 +300,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.TwoHundredApplicationJSONClasses != nil {
         // handle response
     }
@@ -359,7 +352,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Pet != nil {
         // handle response
     }
@@ -397,7 +389,6 @@ import(
 	"context"
 	"petstore/v3/pkg/models/operations"
 	"log"
-	"net/http"
 )
 
 func main() {
@@ -412,8 +403,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    if res.StatusCode == http.StatusOK {
+    if res != nil {
         // handle response
     }
 }
@@ -466,7 +456,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Pet != nil {
         // handle response
     }
@@ -520,7 +509,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Pet != nil {
         // handle response
     }
@@ -568,7 +556,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Pet != nil {
         // handle response
     }
@@ -619,7 +606,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.APIResponse != nil {
         // handle response
     }

@@ -28,10 +28,6 @@ func (o *LoginUserRequest) GetUsername() *string {
 }
 
 type LoginUserResponse struct {
-	// successful operation
-	TwoHundredApplicationJSONRes *string
-	// successful operation
-	TwoHundredApplicationXMLRes *string
 	// HTTP response content type for this operation
 	ContentType string
 	Headers     map[string][]string
@@ -39,20 +35,10 @@ type LoginUserResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-}
-
-func (o *LoginUserResponse) GetTwoHundredApplicationJSONRes() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationJSONRes
-}
-
-func (o *LoginUserResponse) GetTwoHundredApplicationXMLRes() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TwoHundredApplicationXMLRes
+	// successful operation
+	Res *string
+	// successful operation
+	String *string
 }
 
 func (o *LoginUserResponse) GetContentType() string {
@@ -81,4 +67,18 @@ func (o *LoginUserResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *LoginUserResponse) GetRes() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Res
+}
+
+func (o *LoginUserResponse) GetString() *string {
+	if o == nil {
+		return nil
+	}
+	return o.String
 }
