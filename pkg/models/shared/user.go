@@ -2,68 +2,611 @@
 
 package shared
 
-type User struct {
-	Email     *string `json:"email,omitempty" form:"name=email"`
-	FirstName *string `json:"firstName,omitempty" form:"name=firstName"`
-	ID        *int64  `json:"id,omitempty" form:"name=id"`
-	LastName  *string `json:"lastName,omitempty" form:"name=lastName"`
-	Password  *string `json:"password,omitempty" form:"name=password"`
-	Phone     *string `json:"phone,omitempty" form:"name=phone"`
+type Email struct {
+	Email     *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	ID        *int64  `json:"id,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Phone     *string `json:"phone,omitempty"`
 	// User Status
-	UserStatus *int    `json:"userStatus,omitempty" form:"name=userStatus"`
-	Username   *string `json:"username,omitempty" form:"name=username"`
+	UserStatus *int    `json:"userStatus,omitempty"`
+	Username   *string `json:"username,omitempty"`
 }
 
-func (o *User) GetEmail() *string {
+func (o *Email) GetEmail() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-func (o *User) GetFirstName() *string {
+func (o *Email) GetFirstName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.FirstName
 }
 
-func (o *User) GetID() *int64 {
+func (o *Email) GetID() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *User) GetLastName() *string {
+func (o *Email) GetLastName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.LastName
 }
 
-func (o *User) GetPassword() *string {
+func (o *Email) GetPassword() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Password
 }
 
-func (o *User) GetPhone() *string {
+func (o *Email) GetPhone() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Phone
 }
 
-func (o *User) GetUserStatus() *int {
+func (o *Email) GetUserStatus() *int {
 	if o == nil {
 		return nil
 	}
 	return o.UserStatus
 }
 
-func (o *User) GetUsername() *string {
+func (o *Email) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type FirstName struct {
+	Email     *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	ID        *int64  `json:"id,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Phone     *string `json:"phone,omitempty"`
+	// User Status
+	UserStatus *int    `json:"userStatus,omitempty"`
+	Username   *string `json:"username,omitempty"`
+}
+
+func (o *FirstName) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *FirstName) GetFirstName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FirstName
+}
+
+func (o *FirstName) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *FirstName) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *FirstName) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *FirstName) GetPhone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Phone
+}
+
+func (o *FirstName) GetUserStatus() *int {
+	if o == nil {
+		return nil
+	}
+	return o.UserStatus
+}
+
+func (o *FirstName) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type UserID struct {
+	Email     *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	ID        *int64  `json:"id,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Phone     *string `json:"phone,omitempty"`
+	// User Status
+	UserStatus *int    `json:"userStatus,omitempty"`
+	Username   *string `json:"username,omitempty"`
+}
+
+func (o *UserID) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *UserID) GetFirstName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FirstName
+}
+
+func (o *UserID) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *UserID) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *UserID) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *UserID) GetPhone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Phone
+}
+
+func (o *UserID) GetUserStatus() *int {
+	if o == nil {
+		return nil
+	}
+	return o.UserStatus
+}
+
+func (o *UserID) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type LastName struct {
+	Email     *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	ID        *int64  `json:"id,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Phone     *string `json:"phone,omitempty"`
+	// User Status
+	UserStatus *int    `json:"userStatus,omitempty"`
+	Username   *string `json:"username,omitempty"`
+}
+
+func (o *LastName) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *LastName) GetFirstName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FirstName
+}
+
+func (o *LastName) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *LastName) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *LastName) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *LastName) GetPhone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Phone
+}
+
+func (o *LastName) GetUserStatus() *int {
+	if o == nil {
+		return nil
+	}
+	return o.UserStatus
+}
+
+func (o *LastName) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type Password struct {
+	Email     *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	ID        *int64  `json:"id,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Phone     *string `json:"phone,omitempty"`
+	// User Status
+	UserStatus *int    `json:"userStatus,omitempty"`
+	Username   *string `json:"username,omitempty"`
+}
+
+func (o *Password) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *Password) GetFirstName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FirstName
+}
+
+func (o *Password) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Password) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *Password) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *Password) GetPhone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Phone
+}
+
+func (o *Password) GetUserStatus() *int {
+	if o == nil {
+		return nil
+	}
+	return o.UserStatus
+}
+
+func (o *Password) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type Phone struct {
+	Email     *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	ID        *int64  `json:"id,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Phone     *string `json:"phone,omitempty"`
+	// User Status
+	UserStatus *int    `json:"userStatus,omitempty"`
+	Username   *string `json:"username,omitempty"`
+}
+
+func (o *Phone) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *Phone) GetFirstName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FirstName
+}
+
+func (o *Phone) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Phone) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *Phone) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *Phone) GetPhone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Phone
+}
+
+func (o *Phone) GetUserStatus() *int {
+	if o == nil {
+		return nil
+	}
+	return o.UserStatus
+}
+
+func (o *Phone) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type UserStatus struct {
+	Email     *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	ID        *int64  `json:"id,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Phone     *string `json:"phone,omitempty"`
+	// User Status
+	UserStatus *int    `json:"userStatus,omitempty"`
+	Username   *string `json:"username,omitempty"`
+}
+
+func (o *UserStatus) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *UserStatus) GetFirstName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FirstName
+}
+
+func (o *UserStatus) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *UserStatus) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *UserStatus) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *UserStatus) GetPhone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Phone
+}
+
+func (o *UserStatus) GetUserStatus() *int {
+	if o == nil {
+		return nil
+	}
+	return o.UserStatus
+}
+
+func (o *UserStatus) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type Username struct {
+	Email     *string `json:"email,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
+	ID        *int64  `json:"id,omitempty"`
+	LastName  *string `json:"lastName,omitempty"`
+	Password  *string `json:"password,omitempty"`
+	Phone     *string `json:"phone,omitempty"`
+	// User Status
+	UserStatus *int    `json:"userStatus,omitempty"`
+	Username   *string `json:"username,omitempty"`
+}
+
+func (o *Username) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *Username) GetFirstName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FirstName
+}
+
+func (o *Username) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Username) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *Username) GetPassword() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *Username) GetPhone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Phone
+}
+
+func (o *Username) GetUserStatus() *int {
+	if o == nil {
+		return nil
+	}
+	return o.UserStatus
+}
+
+func (o *Username) GetUsername() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Username
+}
+
+type User struct {
+	Email      *Email      `json:"email,omitempty" form:"name=email,json"`
+	FirstName  *FirstName  `json:"firstName,omitempty" form:"name=firstName,json"`
+	ID         *UserID     `json:"id,omitempty" form:"name=id,json"`
+	LastName   *LastName   `json:"lastName,omitempty" form:"name=lastName,json"`
+	Password   *Password   `json:"password,omitempty" form:"name=password,json"`
+	Phone      *Phone      `json:"phone,omitempty" form:"name=phone,json"`
+	UserStatus *UserStatus `json:"userStatus,omitempty" form:"name=userStatus,json"`
+	Username   *Username   `json:"username,omitempty" form:"name=username,json"`
+}
+
+func (o *User) GetEmail() *Email {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *User) GetFirstName() *FirstName {
+	if o == nil {
+		return nil
+	}
+	return o.FirstName
+}
+
+func (o *User) GetID() *UserID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *User) GetLastName() *LastName {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *User) GetPassword() *Password {
+	if o == nil {
+		return nil
+	}
+	return o.Password
+}
+
+func (o *User) GetPhone() *Phone {
+	if o == nil {
+		return nil
+	}
+	return o.Phone
+}
+
+func (o *User) GetUserStatus() *UserStatus {
+	if o == nil {
+		return nil
+	}
+	return o.UserStatus
+}
+
+func (o *User) GetUsername() *Username {
 	if o == nil {
 		return nil
 	}

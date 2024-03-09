@@ -9,7 +9,7 @@ import (
 type UpdateUserRawRequest struct {
 	// Update an existent user in the store
 	RequestBody []byte `request:"mediaType=application/xml"`
-	// name that need to be deleted
+	// name that needs to be updated
 	Username string `pathParam:"style=simple,explode=false,name=username"`
 }
 

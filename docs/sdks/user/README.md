@@ -41,16 +41,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.User.CreateUserForm(ctx, &shared.User{
-        Email: petstore.String("john@email.com"),
-        FirstName: petstore.String("John"),
-        ID: petstore.Int64(10),
-        LastName: petstore.String("James"),
-        Password: petstore.String("12345"),
-        Phone: petstore.String("12345"),
-        UserStatus: petstore.Int(1),
-        Username: petstore.String("theUser"),
-    })
+    res, err := s.User.CreateUserForm(ctx, &shared.User{})
     if err != nil {
         log.Fatal(err)
     }
@@ -97,16 +88,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.User.CreateUserJSON(ctx, &shared.User{
-        Email: petstore.String("john@email.com"),
-        FirstName: petstore.String("John"),
-        ID: petstore.Int64(10),
-        LastName: petstore.String("James"),
-        Password: petstore.String("12345"),
-        Phone: petstore.String("12345"),
-        UserStatus: petstore.Int(1),
-        Username: petstore.String("theUser"),
-    })
+    res, err := s.User.CreateUserJSON(ctx, &shared.User{})
     if err != nil {
         log.Fatal(err)
     }
@@ -201,16 +183,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.CreateUsersWithListInput(ctx, []shared.User{
-        shared.User{
-            Email: petstore.String("john@email.com"),
-            FirstName: petstore.String("John"),
-            ID: petstore.Int64(10),
-            LastName: petstore.String("James"),
-            Password: petstore.String("12345"),
-            Phone: petstore.String("12345"),
-            UserStatus: petstore.Int(1),
-            Username: petstore.String("theUser"),
-        },
+        shared.User{},
     })
     if err != nil {
         log.Fatal(err)

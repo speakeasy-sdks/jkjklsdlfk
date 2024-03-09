@@ -9,20 +9,20 @@ import (
 	"time"
 )
 
-// Order Status
-type Status string
+// OrderSchemasCompleteStatus - Order Status
+type OrderSchemasCompleteStatus string
 
 const (
-	StatusPlaced    Status = "placed"
-	StatusApproved  Status = "approved"
-	StatusDelivered Status = "delivered"
+	OrderSchemasCompleteStatusPlaced    OrderSchemasCompleteStatus = "placed"
+	OrderSchemasCompleteStatusApproved  OrderSchemasCompleteStatus = "approved"
+	OrderSchemasCompleteStatusDelivered OrderSchemasCompleteStatus = "delivered"
 )
 
-func (e Status) ToPointer() *Status {
+func (e OrderSchemasCompleteStatus) ToPointer() *OrderSchemasCompleteStatus {
 	return &e
 }
 
-func (e *Status) UnmarshalJSON(data []byte) error {
+func (e *OrderSchemasCompleteStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,63 +33,584 @@ func (e *Status) UnmarshalJSON(data []byte) error {
 	case "approved":
 		fallthrough
 	case "delivered":
-		*e = Status(v)
+		*e = OrderSchemasCompleteStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Status: %v", v)
+		return fmt.Errorf("invalid value for OrderSchemasCompleteStatus: %v", v)
 	}
 }
 
-type Order struct {
-	Complete *bool      `json:"complete,omitempty" form:"name=complete"`
-	ID       *int64     `json:"id,omitempty" form:"name=id"`
-	PetID    *int64     `json:"petId,omitempty" form:"name=petId"`
-	Quantity *int       `json:"quantity,omitempty" form:"name=quantity"`
-	ShipDate *time.Time `json:"shipDate,omitempty" form:"name=shipDate"`
+type Complete struct {
+	Complete *bool      `json:"complete,omitempty"`
+	ID       *int64     `json:"id,omitempty"`
+	PetID    *int64     `json:"petId,omitempty"`
+	Quantity *int       `json:"quantity,omitempty"`
+	ShipDate *time.Time `json:"shipDate,omitempty"`
 	// Order Status
-	Status *Status `json:"status,omitempty" form:"name=status"`
+	Status *OrderSchemasCompleteStatus `json:"status,omitempty"`
 }
 
-func (o Order) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
+func (c Complete) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
 }
 
-func (o *Order) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
+func (c *Complete) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Order) GetComplete() *bool {
+func (o *Complete) GetComplete() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Complete
 }
 
-func (o *Order) GetID() *int64 {
+func (o *Complete) GetID() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Order) GetPetID() *int64 {
+func (o *Complete) GetPetID() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.PetID
 }
 
-func (o *Order) GetQuantity() *int {
+func (o *Complete) GetQuantity() *int {
 	if o == nil {
 		return nil
 	}
 	return o.Quantity
 }
 
-func (o *Order) GetShipDate() *time.Time {
+func (o *Complete) GetShipDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ShipDate
+}
+
+func (o *Complete) GetStatus() *OrderSchemasCompleteStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+// OrderStatus - Order Status
+type OrderStatus string
+
+const (
+	OrderStatusPlaced    OrderStatus = "placed"
+	OrderStatusApproved  OrderStatus = "approved"
+	OrderStatusDelivered OrderStatus = "delivered"
+)
+
+func (e OrderStatus) ToPointer() *OrderStatus {
+	return &e
+}
+
+func (e *OrderStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "placed":
+		fallthrough
+	case "approved":
+		fallthrough
+	case "delivered":
+		*e = OrderStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OrderStatus: %v", v)
+	}
+}
+
+type OrderID struct {
+	Complete *bool      `json:"complete,omitempty"`
+	ID       *int64     `json:"id,omitempty"`
+	PetID    *int64     `json:"petId,omitempty"`
+	Quantity *int       `json:"quantity,omitempty"`
+	ShipDate *time.Time `json:"shipDate,omitempty"`
+	// Order Status
+	Status *OrderStatus `json:"status,omitempty"`
+}
+
+func (o OrderID) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OrderID) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *OrderID) GetComplete() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Complete
+}
+
+func (o *OrderID) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *OrderID) GetPetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PetID
+}
+
+func (o *OrderID) GetQuantity() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *OrderID) GetShipDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ShipDate
+}
+
+func (o *OrderID) GetStatus() *OrderStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+// OrderSchemasStatus - Order Status
+type OrderSchemasStatus string
+
+const (
+	OrderSchemasStatusPlaced    OrderSchemasStatus = "placed"
+	OrderSchemasStatusApproved  OrderSchemasStatus = "approved"
+	OrderSchemasStatusDelivered OrderSchemasStatus = "delivered"
+)
+
+func (e OrderSchemasStatus) ToPointer() *OrderSchemasStatus {
+	return &e
+}
+
+func (e *OrderSchemasStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "placed":
+		fallthrough
+	case "approved":
+		fallthrough
+	case "delivered":
+		*e = OrderSchemasStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OrderSchemasStatus: %v", v)
+	}
+}
+
+type PetID struct {
+	Complete *bool      `json:"complete,omitempty"`
+	ID       *int64     `json:"id,omitempty"`
+	PetID    *int64     `json:"petId,omitempty"`
+	Quantity *int       `json:"quantity,omitempty"`
+	ShipDate *time.Time `json:"shipDate,omitempty"`
+	// Order Status
+	Status *OrderSchemasStatus `json:"status,omitempty"`
+}
+
+func (p PetID) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PetID) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PetID) GetComplete() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Complete
+}
+
+func (o *PetID) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PetID) GetPetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PetID
+}
+
+func (o *PetID) GetQuantity() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *PetID) GetShipDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ShipDate
+}
+
+func (o *PetID) GetStatus() *OrderSchemasStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+// OrderSchemasQuantityStatus - Order Status
+type OrderSchemasQuantityStatus string
+
+const (
+	OrderSchemasQuantityStatusPlaced    OrderSchemasQuantityStatus = "placed"
+	OrderSchemasQuantityStatusApproved  OrderSchemasQuantityStatus = "approved"
+	OrderSchemasQuantityStatusDelivered OrderSchemasQuantityStatus = "delivered"
+)
+
+func (e OrderSchemasQuantityStatus) ToPointer() *OrderSchemasQuantityStatus {
+	return &e
+}
+
+func (e *OrderSchemasQuantityStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "placed":
+		fallthrough
+	case "approved":
+		fallthrough
+	case "delivered":
+		*e = OrderSchemasQuantityStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OrderSchemasQuantityStatus: %v", v)
+	}
+}
+
+type Quantity struct {
+	Complete *bool      `json:"complete,omitempty"`
+	ID       *int64     `json:"id,omitempty"`
+	PetID    *int64     `json:"petId,omitempty"`
+	Quantity *int       `json:"quantity,omitempty"`
+	ShipDate *time.Time `json:"shipDate,omitempty"`
+	// Order Status
+	Status *OrderSchemasQuantityStatus `json:"status,omitempty"`
+}
+
+func (q Quantity) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(q, "", false)
+}
+
+func (q *Quantity) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &q, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Quantity) GetComplete() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Complete
+}
+
+func (o *Quantity) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Quantity) GetPetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PetID
+}
+
+func (o *Quantity) GetQuantity() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *Quantity) GetShipDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ShipDate
+}
+
+func (o *Quantity) GetStatus() *OrderSchemasQuantityStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+// OrderSchemasShipDateStatus - Order Status
+type OrderSchemasShipDateStatus string
+
+const (
+	OrderSchemasShipDateStatusPlaced    OrderSchemasShipDateStatus = "placed"
+	OrderSchemasShipDateStatusApproved  OrderSchemasShipDateStatus = "approved"
+	OrderSchemasShipDateStatusDelivered OrderSchemasShipDateStatus = "delivered"
+)
+
+func (e OrderSchemasShipDateStatus) ToPointer() *OrderSchemasShipDateStatus {
+	return &e
+}
+
+func (e *OrderSchemasShipDateStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "placed":
+		fallthrough
+	case "approved":
+		fallthrough
+	case "delivered":
+		*e = OrderSchemasShipDateStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OrderSchemasShipDateStatus: %v", v)
+	}
+}
+
+type ShipDate struct {
+	Complete *bool      `json:"complete,omitempty"`
+	ID       *int64     `json:"id,omitempty"`
+	PetID    *int64     `json:"petId,omitempty"`
+	Quantity *int       `json:"quantity,omitempty"`
+	ShipDate *time.Time `json:"shipDate,omitempty"`
+	// Order Status
+	Status *OrderSchemasShipDateStatus `json:"status,omitempty"`
+}
+
+func (s ShipDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ShipDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ShipDate) GetComplete() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Complete
+}
+
+func (o *ShipDate) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ShipDate) GetPetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PetID
+}
+
+func (o *ShipDate) GetQuantity() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *ShipDate) GetShipDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ShipDate
+}
+
+func (o *ShipDate) GetStatus() *OrderSchemasShipDateStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+// OrderSchemasStatusStatus - Order Status
+type OrderSchemasStatusStatus string
+
+const (
+	OrderSchemasStatusStatusPlaced    OrderSchemasStatusStatus = "placed"
+	OrderSchemasStatusStatusApproved  OrderSchemasStatusStatus = "approved"
+	OrderSchemasStatusStatusDelivered OrderSchemasStatusStatus = "delivered"
+)
+
+func (e OrderSchemasStatusStatus) ToPointer() *OrderSchemasStatusStatus {
+	return &e
+}
+
+func (e *OrderSchemasStatusStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "placed":
+		fallthrough
+	case "approved":
+		fallthrough
+	case "delivered":
+		*e = OrderSchemasStatusStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OrderSchemasStatusStatus: %v", v)
+	}
+}
+
+type Status struct {
+	Complete *bool      `json:"complete,omitempty"`
+	ID       *int64     `json:"id,omitempty"`
+	PetID    *int64     `json:"petId,omitempty"`
+	Quantity *int       `json:"quantity,omitempty"`
+	ShipDate *time.Time `json:"shipDate,omitempty"`
+	// Order Status
+	Status *OrderSchemasStatusStatus `json:"status,omitempty"`
+}
+
+func (s Status) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Status) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Status) GetComplete() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Complete
+}
+
+func (o *Status) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Status) GetPetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PetID
+}
+
+func (o *Status) GetQuantity() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *Status) GetShipDate() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ShipDate
+}
+
+func (o *Status) GetStatus() *OrderSchemasStatusStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+type Order struct {
+	Complete *Complete `json:"complete,omitempty" form:"name=complete,json"`
+	ID       *OrderID  `json:"id,omitempty" form:"name=id,json"`
+	PetID    *PetID    `json:"petId,omitempty" form:"name=petId,json"`
+	Quantity *Quantity `json:"quantity,omitempty" form:"name=quantity,json"`
+	ShipDate *ShipDate `json:"shipDate,omitempty" form:"name=shipDate,json"`
+	Status   *Status   `json:"status,omitempty" form:"name=status,json"`
+}
+
+func (o *Order) GetComplete() *Complete {
+	if o == nil {
+		return nil
+	}
+	return o.Complete
+}
+
+func (o *Order) GetID() *OrderID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Order) GetPetID() *PetID {
+	if o == nil {
+		return nil
+	}
+	return o.PetID
+}
+
+func (o *Order) GetQuantity() *Quantity {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *Order) GetShipDate() *ShipDate {
 	if o == nil {
 		return nil
 	}

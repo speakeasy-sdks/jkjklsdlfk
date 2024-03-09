@@ -2,27 +2,108 @@
 
 package shared
 
-type APIResponse struct {
+type Code struct {
 	Code    *int    `json:"code,omitempty"`
 	Message *string `json:"message,omitempty"`
 	Type    *string `json:"type,omitempty"`
 }
 
-func (o *APIResponse) GetCode() *int {
+func (o *Code) GetCode() *int {
 	if o == nil {
 		return nil
 	}
 	return o.Code
 }
 
-func (o *APIResponse) GetMessage() *string {
+func (o *Code) GetMessage() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Message
 }
 
-func (o *APIResponse) GetType() *string {
+func (o *Code) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+type Message struct {
+	Code    *int    `json:"code,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Type    *string `json:"type,omitempty"`
+}
+
+func (o *Message) GetCode() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *Message) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *Message) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+type Type struct {
+	Code    *int    `json:"code,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Type    *string `json:"type,omitempty"`
+}
+
+func (o *Type) GetCode() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *Type) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *Type) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+type APIResponse struct {
+	Code    *Code    `json:"code,omitempty"`
+	Message *Message `json:"message,omitempty"`
+	Type    *Type    `json:"type,omitempty"`
+}
+
+func (o *APIResponse) GetCode() *Code {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *APIResponse) GetMessage() *Message {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *APIResponse) GetType() *Type {
 	if o == nil {
 		return nil
 	}

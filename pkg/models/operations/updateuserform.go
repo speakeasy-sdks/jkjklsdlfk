@@ -10,7 +10,7 @@ import (
 type UpdateUserFormRequest struct {
 	// Update an existent user in the store
 	User *shared.User `request:"mediaType=application/x-www-form-urlencoded"`
-	// name that need to be deleted
+	// name that needs to be updated
 	Username string `pathParam:"style=simple,explode=false,name=username"`
 }
 

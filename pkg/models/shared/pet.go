@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-// PetStatus - pet status in the store
-type PetStatus string
+// PetSchemasCategoryStatus - pet status in the store
+type PetSchemasCategoryStatus string
 
 const (
-	PetStatusAvailable PetStatus = "available"
-	PetStatusPending   PetStatus = "pending"
-	PetStatusSold      PetStatus = "sold"
+	PetSchemasCategoryStatusAvailable PetSchemasCategoryStatus = "available"
+	PetSchemasCategoryStatusPending   PetSchemasCategoryStatus = "pending"
+	PetSchemasCategoryStatusSold      PetSchemasCategoryStatus = "sold"
 )
 
-func (e PetStatus) ToPointer() *PetStatus {
+func (e PetSchemasCategoryStatus) ToPointer() *PetSchemasCategoryStatus {
 	return &e
 }
 
-func (e *PetStatus) UnmarshalJSON(data []byte) error {
+func (e *PetSchemasCategoryStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,47 +31,513 @@ func (e *PetStatus) UnmarshalJSON(data []byte) error {
 	case "pending":
 		fallthrough
 	case "sold":
-		*e = PetStatus(v)
+		*e = PetSchemasCategoryStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PetStatus: %v", v)
+		return fmt.Errorf("invalid value for PetSchemasCategoryStatus: %v", v)
 	}
 }
 
-type Pet struct {
-	Category  *Category `json:"category,omitempty" form:"name=category,json"`
-	ID        *int64    `json:"id,omitempty" form:"name=id"`
-	Name      string    `json:"name" form:"name=name"`
-	PhotoUrls []string  `json:"photoUrls" form:"name=photoUrls"`
+type PetCategory struct {
+	Category  *Category `json:"category,omitempty"`
+	ID        *int64    `json:"id,omitempty"`
+	Name      string    `json:"name"`
+	PhotoUrls []string  `json:"photoUrls"`
 	// pet status in the store
-	Status *PetStatus `json:"status,omitempty" form:"name=status"`
-	Tags   []Tag      `json:"tags,omitempty" form:"name=tags,json"`
+	Status *PetSchemasCategoryStatus `json:"status,omitempty"`
+	Tags   []Tag                     `json:"tags,omitempty"`
 }
 
-func (o *Pet) GetCategory() *Category {
+func (o *PetCategory) GetCategory() *Category {
 	if o == nil {
 		return nil
 	}
 	return o.Category
 }
 
-func (o *Pet) GetID() *int64 {
+func (o *PetCategory) GetID() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Pet) GetName() string {
+func (o *PetCategory) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Pet) GetPhotoUrls() []string {
+func (o *PetCategory) GetPhotoUrls() []string {
 	if o == nil {
 		return []string{}
+	}
+	return o.PhotoUrls
+}
+
+func (o *PetCategory) GetStatus() *PetSchemasCategoryStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *PetCategory) GetTags() []Tag {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+// PetSchemasStatus - pet status in the store
+type PetSchemasStatus string
+
+const (
+	PetSchemasStatusAvailable PetSchemasStatus = "available"
+	PetSchemasStatusPending   PetSchemasStatus = "pending"
+	PetSchemasStatusSold      PetSchemasStatus = "sold"
+)
+
+func (e PetSchemasStatus) ToPointer() *PetSchemasStatus {
+	return &e
+}
+
+func (e *PetSchemasStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "available":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "sold":
+		*e = PetSchemasStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PetSchemasStatus: %v", v)
+	}
+}
+
+type PetSchemasID struct {
+	Category  *Category `json:"category,omitempty"`
+	ID        *int64    `json:"id,omitempty"`
+	Name      string    `json:"name"`
+	PhotoUrls []string  `json:"photoUrls"`
+	// pet status in the store
+	Status *PetSchemasStatus `json:"status,omitempty"`
+	Tags   []Tag             `json:"tags,omitempty"`
+}
+
+func (o *PetSchemasID) GetCategory() *Category {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *PetSchemasID) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PetSchemasID) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PetSchemasID) GetPhotoUrls() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.PhotoUrls
+}
+
+func (o *PetSchemasID) GetStatus() *PetSchemasStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *PetSchemasID) GetTags() []Tag {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+// PetSchemasNameStatus - pet status in the store
+type PetSchemasNameStatus string
+
+const (
+	PetSchemasNameStatusAvailable PetSchemasNameStatus = "available"
+	PetSchemasNameStatusPending   PetSchemasNameStatus = "pending"
+	PetSchemasNameStatusSold      PetSchemasNameStatus = "sold"
+)
+
+func (e PetSchemasNameStatus) ToPointer() *PetSchemasNameStatus {
+	return &e
+}
+
+func (e *PetSchemasNameStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "available":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "sold":
+		*e = PetSchemasNameStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PetSchemasNameStatus: %v", v)
+	}
+}
+
+type PetName struct {
+	Category  *Category `json:"category,omitempty"`
+	ID        *int64    `json:"id,omitempty"`
+	Name      string    `json:"name"`
+	PhotoUrls []string  `json:"photoUrls"`
+	// pet status in the store
+	Status *PetSchemasNameStatus `json:"status,omitempty"`
+	Tags   []Tag                 `json:"tags,omitempty"`
+}
+
+func (o *PetName) GetCategory() *Category {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *PetName) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PetName) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PetName) GetPhotoUrls() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.PhotoUrls
+}
+
+func (o *PetName) GetStatus() *PetSchemasNameStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *PetName) GetTags() []Tag {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+// PetSchemasPhotoUrlsStatus - pet status in the store
+type PetSchemasPhotoUrlsStatus string
+
+const (
+	PetSchemasPhotoUrlsStatusAvailable PetSchemasPhotoUrlsStatus = "available"
+	PetSchemasPhotoUrlsStatusPending   PetSchemasPhotoUrlsStatus = "pending"
+	PetSchemasPhotoUrlsStatusSold      PetSchemasPhotoUrlsStatus = "sold"
+)
+
+func (e PetSchemasPhotoUrlsStatus) ToPointer() *PetSchemasPhotoUrlsStatus {
+	return &e
+}
+
+func (e *PetSchemasPhotoUrlsStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "available":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "sold":
+		*e = PetSchemasPhotoUrlsStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PetSchemasPhotoUrlsStatus: %v", v)
+	}
+}
+
+type PhotoUrls struct {
+	Category  *Category `json:"category,omitempty"`
+	ID        *int64    `json:"id,omitempty"`
+	Name      string    `json:"name"`
+	PhotoUrls []string  `json:"photoUrls"`
+	// pet status in the store
+	Status *PetSchemasPhotoUrlsStatus `json:"status,omitempty"`
+	Tags   []Tag                      `json:"tags,omitempty"`
+}
+
+func (o *PhotoUrls) GetCategory() *Category {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *PhotoUrls) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PhotoUrls) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PhotoUrls) GetPhotoUrls() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.PhotoUrls
+}
+
+func (o *PhotoUrls) GetStatus() *PetSchemasPhotoUrlsStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *PhotoUrls) GetTags() []Tag {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+// PetSchemasStatusStatus - pet status in the store
+type PetSchemasStatusStatus string
+
+const (
+	PetSchemasStatusStatusAvailable PetSchemasStatusStatus = "available"
+	PetSchemasStatusStatusPending   PetSchemasStatusStatus = "pending"
+	PetSchemasStatusStatusSold      PetSchemasStatusStatus = "sold"
+)
+
+func (e PetSchemasStatusStatus) ToPointer() *PetSchemasStatusStatus {
+	return &e
+}
+
+func (e *PetSchemasStatusStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "available":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "sold":
+		*e = PetSchemasStatusStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PetSchemasStatusStatus: %v", v)
+	}
+}
+
+type PetStatus struct {
+	Category  *Category `json:"category,omitempty"`
+	ID        *int64    `json:"id,omitempty"`
+	Name      string    `json:"name"`
+	PhotoUrls []string  `json:"photoUrls"`
+	// pet status in the store
+	Status *PetSchemasStatusStatus `json:"status,omitempty"`
+	Tags   []Tag                   `json:"tags,omitempty"`
+}
+
+func (o *PetStatus) GetCategory() *Category {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *PetStatus) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PetStatus) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *PetStatus) GetPhotoUrls() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.PhotoUrls
+}
+
+func (o *PetStatus) GetStatus() *PetSchemasStatusStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *PetStatus) GetTags() []Tag {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+// PetSchemasTagsStatus - pet status in the store
+type PetSchemasTagsStatus string
+
+const (
+	PetSchemasTagsStatusAvailable PetSchemasTagsStatus = "available"
+	PetSchemasTagsStatusPending   PetSchemasTagsStatus = "pending"
+	PetSchemasTagsStatusSold      PetSchemasTagsStatus = "sold"
+)
+
+func (e PetSchemasTagsStatus) ToPointer() *PetSchemasTagsStatus {
+	return &e
+}
+
+func (e *PetSchemasTagsStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "available":
+		fallthrough
+	case "pending":
+		fallthrough
+	case "sold":
+		*e = PetSchemasTagsStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PetSchemasTagsStatus: %v", v)
+	}
+}
+
+type Tags struct {
+	Category  *Category `json:"category,omitempty"`
+	ID        *int64    `json:"id,omitempty"`
+	Name      string    `json:"name"`
+	PhotoUrls []string  `json:"photoUrls"`
+	// pet status in the store
+	Status *PetSchemasTagsStatus `json:"status,omitempty"`
+	Tags   []Tag                 `json:"tags,omitempty"`
+}
+
+func (o *Tags) GetCategory() *Category {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *Tags) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Tags) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Tags) GetPhotoUrls() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.PhotoUrls
+}
+
+func (o *Tags) GetStatus() *PetSchemasTagsStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *Tags) GetTags() []Tag {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+type Pet struct {
+	Category  *PetCategory  `json:"category,omitempty" form:"name=category,json"`
+	ID        *PetSchemasID `json:"id,omitempty" form:"name=id,json"`
+	Name      PetName       `json:"name" form:"name=name,json"`
+	PhotoUrls PhotoUrls     `json:"photoUrls" form:"name=photoUrls,json"`
+	Status    *PetStatus    `json:"status,omitempty" form:"name=status,json"`
+	Tags      *Tags         `json:"tags,omitempty" form:"name=tags,json"`
+}
+
+func (o *Pet) GetCategory() *PetCategory {
+	if o == nil {
+		return nil
+	}
+	return o.Category
+}
+
+func (o *Pet) GetID() *PetSchemasID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Pet) GetName() PetName {
+	if o == nil {
+		return PetName{}
+	}
+	return o.Name
+}
+
+func (o *Pet) GetPhotoUrls() PhotoUrls {
+	if o == nil {
+		return PhotoUrls{}
 	}
 	return o.PhotoUrls
 }
@@ -83,7 +549,7 @@ func (o *Pet) GetStatus() *PetStatus {
 	return o.Status
 }
 
-func (o *Pet) GetTags() []Tag {
+func (o *Pet) GetTags() *Tags {
 	if o == nil {
 		return nil
 	}
