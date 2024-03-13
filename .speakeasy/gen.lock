@@ -3,10 +3,10 @@ id: 7983074b-c61d-4f36-a4b8-1f1e5a5107e6
 management:
   docChecksum: fcb45d84c941386715ad3a606e6dcab0
   docVersion: 1.0.18
-  speakeasyVersion: 1.205.0
-  generationVersion: 2.279.1
-  releaseVersion: 3.2.1
-  configChecksum: 408ab25d561127fdb07c48eb024791dd
+  speakeasyVersion: 1.207.1
+  generationVersion: 2.280.6
+  releaseVersion: 3.2.2
+  configChecksum: 7d189c5da1b9d8701346a54c1957fc6b
   repoURL: https://github.com/speakeasy-sdks/jkjklsdlfk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/jkjklsdlfk
@@ -16,7 +16,7 @@ features:
     constsAndDefaults: 0.1.4
     core: 3.4.4
     globalSecurity: 2.82.8
-    globalServerURLs: 2.82.1
+    globalServerURLs: 2.82.2
     methodSecurity: 2.82.2
     responseFormat: 0.1.0
 generatedFiles:
