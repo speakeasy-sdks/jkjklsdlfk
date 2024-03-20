@@ -16,19 +16,10 @@ func main() {
 
 	ctx := context.Background()
 	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
-		Name: shared.PetName{
-			ID:   petstore.Int64(10),
-			Name: "doggie",
-			PhotoUrls: []string{
-				"<value>",
-			},
-		},
-		PhotoUrls: shared.PhotoUrls{
-			ID:   petstore.Int64(10),
-			Name: "doggie",
-			PhotoUrls: []string{
-				"<value>",
-			},
+		ID:   petstore.Int64(10),
+		Name: "doggie",
+		PhotoUrls: []string{
+			"<value>",
 		},
 	})
 	if err != nil {

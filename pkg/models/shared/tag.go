@@ -2,57 +2,19 @@
 
 package shared
 
-type TagID struct {
-	ID   *int64  `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (o *TagID) GetID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *TagID) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-type TagName struct {
-	ID   *int64  `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (o *TagName) GetID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *TagName) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
 type Tag struct {
-	ID   *TagID   `json:"id,omitempty"`
-	Name *TagName `json:"name,omitempty"`
+	ID   *int64  `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
-func (o *Tag) GetID() *TagID {
+func (o *Tag) GetID() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Tag) GetName() *TagName {
+func (o *Tag) GetName() *string {
 	if o == nil {
 		return nil
 	}

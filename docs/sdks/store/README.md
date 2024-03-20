@@ -188,7 +188,12 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Store.PlaceOrderForm(ctx, &shared.Order{})
+    res, err := s.Store.PlaceOrderForm(ctx, &shared.Order{
+        ID: petstore.Int64(10),
+        PetID: petstore.Int64(198772),
+        Quantity: petstore.Int(7),
+        Status: shared.StatusApproved.ToPointer(),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -235,7 +240,12 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Store.PlaceOrderJSON(ctx, &shared.Order{})
+    res, err := s.Store.PlaceOrderJSON(ctx, &shared.Order{
+        ID: petstore.Int64(10),
+        PetID: petstore.Int64(198772),
+        Quantity: petstore.Int(7),
+        Status: shared.StatusApproved.ToPointer(),
+    })
     if err != nil {
         log.Fatal(err)
     }

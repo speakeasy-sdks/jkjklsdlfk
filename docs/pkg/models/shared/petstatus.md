@@ -1,13 +1,12 @@
 # PetStatus
 
+pet status in the store
 
-## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `Category`                                                                             | [*shared.Category](../../../pkg/models/shared/category.md)                             | :heavy_minus_sign:                                                                     | N/A                                                                                    |                                                                                        |
-| `ID`                                                                                   | **int64*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    | 10                                                                                     |
-| `Name`                                                                                 | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    | doggie                                                                                 |
-| `PhotoUrls`                                                                            | []*string*                                                                             | :heavy_check_mark:                                                                     | N/A                                                                                    |                                                                                        |
-| `Status`                                                                               | [*shared.PetSchemasStatusStatus](../../../pkg/models/shared/petschemasstatusstatus.md) | :heavy_minus_sign:                                                                     | pet status in the store                                                                |                                                                                        |
-| `Tags`                                                                                 | [][shared.Tag](../../../pkg/models/shared/tag.md)                                      | :heavy_minus_sign:                                                                     | N/A                                                                                    |                                                                                        |
+## Values
+
+| Name                 | Value                |
+| -------------------- | -------------------- |
+| `PetStatusAvailable` | available            |
+| `PetStatusPending`   | pending              |
+| `PetStatusSold`      | sold                 |

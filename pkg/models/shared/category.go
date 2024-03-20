@@ -2,57 +2,19 @@
 
 package shared
 
-type ID struct {
-	ID   *int64  `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (o *ID) GetID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *ID) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-type Name struct {
-	ID   *int64  `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-}
-
-func (o *Name) GetID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *Name) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
 type Category struct {
-	ID   *ID   `json:"id,omitempty"`
-	Name *Name `json:"name,omitempty"`
+	ID   *int64  `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
-func (o *Category) GetID() *ID {
+func (o *Category) GetID() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *Category) GetName() *Name {
+func (o *Category) GetName() *string {
 	if o == nil {
 		return nil
 	}

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7983074b-c61d-4f36-a4b8-1f1e5a5107e6
 management:
-  docChecksum: fcb45d84c941386715ad3a606e6dcab0
-  docVersion: 1.0.18
-  speakeasyVersion: 1.207.1
-  generationVersion: 2.280.6
-  releaseVersion: 3.2.2
-  configChecksum: 7d189c5da1b9d8701346a54c1957fc6b
+  docChecksum: 4cf9c744165eddd5e38e3c149389a9ef
+  docVersion: 1.0.19
+  speakeasyVersion: 1.213.0
+  generationVersion: 2.283.1
+  releaseVersion: 3.2.3
+  configChecksum: fe58b3678a793b99f121304851992ee6
   repoURL: https://github.com/speakeasy-sdks/jkjklsdlfk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/jkjklsdlfk
@@ -15,7 +15,7 @@ features:
   go:
     constsAndDefaults: 0.1.4
     core: 3.4.4
-    globalSecurity: 2.82.8
+    globalSecurity: 2.82.9
     globalServerURLs: 2.82.2
     methodSecurity: 2.82.2
     responseFormat: 0.1.0
@@ -123,50 +123,13 @@ generatedFiles:
   - docs/pkg/models/operations/updateuserjsonresponse.md
   - docs/pkg/models/operations/updateuserrawrequest.md
   - docs/pkg/models/operations/updateuserrawresponse.md
-  - docs/pkg/models/shared/petschemascategorystatus.md
-  - docs/pkg/models/shared/petcategory.md
-  - docs/pkg/models/shared/petschemasstatus.md
-  - docs/pkg/models/shared/petschemasid.md
-  - docs/pkg/models/shared/petschemasnamestatus.md
-  - docs/pkg/models/shared/petname.md
-  - docs/pkg/models/shared/petschemasphotourlsstatus.md
-  - docs/pkg/models/shared/photourls.md
-  - docs/pkg/models/shared/petschemasstatusstatus.md
   - docs/pkg/models/shared/petstatus.md
-  - docs/pkg/models/shared/petschemastagsstatus.md
-  - docs/pkg/models/shared/tags.md
   - docs/pkg/models/shared/pet.md
-  - docs/pkg/models/shared/tagid.md
-  - docs/pkg/models/shared/tagname.md
   - docs/pkg/models/shared/tag.md
-  - docs/pkg/models/shared/id.md
-  - docs/pkg/models/shared/name.md
   - docs/pkg/models/shared/category.md
-  - docs/pkg/models/shared/code.md
-  - docs/pkg/models/shared/message.md
-  - docs/pkg/models/shared/type.md
   - docs/pkg/models/shared/apiresponse.md
-  - docs/pkg/models/shared/orderschemascompletestatus.md
-  - docs/pkg/models/shared/complete.md
-  - docs/pkg/models/shared/orderstatus.md
-  - docs/pkg/models/shared/orderid.md
-  - docs/pkg/models/shared/orderschemasstatus.md
-  - docs/pkg/models/shared/petid.md
-  - docs/pkg/models/shared/orderschemasquantitystatus.md
-  - docs/pkg/models/shared/quantity.md
-  - docs/pkg/models/shared/orderschemasshipdatestatus.md
-  - docs/pkg/models/shared/shipdate.md
-  - docs/pkg/models/shared/orderschemasstatusstatus.md
   - docs/pkg/models/shared/status.md
   - docs/pkg/models/shared/order.md
-  - docs/pkg/models/shared/email.md
-  - docs/pkg/models/shared/firstname.md
-  - docs/pkg/models/shared/userid.md
-  - docs/pkg/models/shared/lastname.md
-  - docs/pkg/models/shared/password.md
-  - docs/pkg/models/shared/phone.md
-  - docs/pkg/models/shared/userstatus.md
-  - docs/pkg/models/shared/username.md
   - docs/pkg/models/shared/user.md
   - docs/pkg/models/shared/security.md
   - docs/sdks/petstore/README.md
