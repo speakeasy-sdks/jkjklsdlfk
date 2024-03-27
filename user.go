@@ -115,6 +115,7 @@ func (s *User) CreateUserForm(ctx context.Context, request *shared.User, opts ..
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	switch {
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
 		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
@@ -227,6 +228,7 @@ func (s *User) CreateUserJSON(ctx context.Context, request *shared.User, opts ..
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	switch {
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
 		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
@@ -339,6 +341,7 @@ func (s *User) CreateUserRaw(ctx context.Context, request []byte, opts ...operat
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	switch {
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
 		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
@@ -543,6 +546,7 @@ func (s *User) DeleteUser(ctx context.Context, request operations.DeleteUserRequ
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	switch {
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
 	case httpRes.StatusCode == 400:
 		fallthrough
 	case httpRes.StatusCode == 404:
@@ -855,6 +859,8 @@ func (s *User) LogoutUser(ctx context.Context) (*operations.LogoutUserResponse, 
 		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
+		fallthrough
 	default:
 	}
 
@@ -938,6 +944,8 @@ func (s *User) UpdateUserForm(ctx context.Context, request operations.UpdateUser
 		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
+		fallthrough
 	default:
 	}
 
@@ -1021,6 +1029,8 @@ func (s *User) UpdateUserJSON(ctx context.Context, request operations.UpdateUser
 		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
+		fallthrough
 	default:
 	}
 
@@ -1104,6 +1114,8 @@ func (s *User) UpdateUserRaw(ctx context.Context, request operations.UpdateUserR
 		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	case httpRes.StatusCode >= 200 && httpRes.StatusCode < 300:
+		fallthrough
 	default:
 	}
 
