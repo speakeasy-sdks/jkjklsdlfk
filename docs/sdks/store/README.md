@@ -35,7 +35,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
+        petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
     ctx := context.Background()
@@ -135,7 +135,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
+        petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
     ctx := context.Background()
@@ -184,7 +184,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
+        petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
     ctx := context.Background()
@@ -236,7 +236,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
+        petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
     ctx := context.Background()
@@ -288,7 +288,7 @@ import(
 
 func main() {
     s := petstore.New(
-        petstore.WithSecurity("Bearer <YOUR_ACCESS_TOKEN_HERE>"),
+        petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
     ctx := context.Background()
