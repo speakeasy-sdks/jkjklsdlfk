@@ -14,14 +14,20 @@ func main() {
 		petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
 	)
 
-	ctx := context.Background()
-	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+	request := shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
 		ID:   petstore.Int64(10),
 		Name: "doggie",
 		PhotoUrls: []string{
 			"<value>",
 		},
-	})
+	}
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}

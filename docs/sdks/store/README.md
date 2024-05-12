@@ -28,8 +28,8 @@ package main
 import(
 	"petstore/v3/pkg/models/shared"
 	petstore "petstore/v3"
-	"context"
 	"petstore/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -38,10 +38,12 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Store.DeleteOrder(ctx, operations.DeleteOrderRequest{
+    request := operations.DeleteOrderRequest{
         OrderID: 127902,
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Store.DeleteOrder(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -85,13 +87,12 @@ import(
 func main() {
     s := petstore.New()
 
-
-    operationSecurity := operations.GetInventorySecurity{
+    security := operations.GetInventorySecurity{
             APIKey: "<YOUR_API_KEY_HERE>",
         }
-
+    
     ctx := context.Background()
-    res, err := s.Store.GetInventory(ctx, operationSecurity)
+    res, err := s.Store.GetInventory(ctx, security)
     if err != nil {
         log.Fatal(err)
     }
@@ -128,8 +129,8 @@ package main
 import(
 	"petstore/v3/pkg/models/shared"
 	petstore "petstore/v3"
-	"context"
 	"petstore/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -138,10 +139,12 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Store.GetOrderByID(ctx, operations.GetOrderByIDRequest{
+    request := operations.GetOrderByIDRequest{
         OrderID: 614993,
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Store.GetOrderByID(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -187,13 +190,15 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Store.PlaceOrderForm(ctx, &shared.Order{
+    var request *shared.Order = &shared.Order{
         ID: petstore.Int64(10),
         PetID: petstore.Int64(198772),
         Quantity: petstore.Int(7),
         Status: shared.StatusApproved.ToPointer(),
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Store.PlaceOrderForm(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -239,13 +244,15 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Store.PlaceOrderJSON(ctx, &shared.Order{
+    var request *shared.Order = &shared.Order{
         ID: petstore.Int64(10),
         PetID: petstore.Int64(198772),
         Quantity: petstore.Int(7),
         Status: shared.StatusApproved.ToPointer(),
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Store.PlaceOrderJSON(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -291,8 +298,10 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
+    var request []byte = []byte("0xcB9dC14dEe")
+    
     ctx := context.Background()
-    res, err := s.Store.PlaceOrderRaw(ctx, []byte("0xcB9dC14dEe"))
+    res, err := s.Store.PlaceOrderRaw(ctx, request)
     if err != nil {
         log.Fatal(err)
     }

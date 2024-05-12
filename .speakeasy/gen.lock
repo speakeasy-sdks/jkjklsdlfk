@@ -3,22 +3,28 @@ id: 7983074b-c61d-4f36-a4b8-1f1e5a5107e6
 management:
   docChecksum: 4cf9c744165eddd5e38e3c149389a9ef
   docVersion: 1.0.19
-  speakeasyVersion: 1.260.6
-  generationVersion: 2.311.1
-  releaseVersion: 3.2.5
-  configChecksum: 26814d772a0c1ffcf24b7ae4a8fcba11
+  speakeasyVersion: 1.286.0
+  generationVersion: 2.326.3
+  releaseVersion: 3.3.0
+  configChecksum: b6bc6ac6baf097fc93928402d167e0e1
   repoURL: https://github.com/speakeasy-sdks/jkjklsdlfk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/jkjklsdlfk
   published: true
 features:
   go:
+    acceptHeaders: 2.81.2
+    additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.4
-    core: 3.4.6
+    core: 3.4.7
     globalSecurity: 2.82.9
+    globalSecurityCallbacks: 0.1.0
+    globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.2
+    intellisenseMarkdownSupport: 0.1.0
     methodSecurity: 2.82.2
-    responseFormat: 0.1.0
+    responseFormat: 0.1.1
+    sdkHooks: 0.1.0
 generatedFiles:
   - pet.go
   - store.go

@@ -28,14 +28,20 @@ func main() {
 		petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
 	)
 
-	ctx := context.Background()
-	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+	request := shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
 		ID:   petstore.Int64(10),
 		Name: "doggie",
 		PhotoUrls: []string{
 			"<value>",
 		},
-	})
+	}
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -131,14 +137,20 @@ func main() {
 		petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
 	)
 
-	ctx := context.Background()
-	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+	request := shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
 		ID:   petstore.Int64(10),
 		Name: "doggie",
 		PhotoUrls: []string{
 			"<value>",
 		},
-	})
+	}
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, request)
 	if err != nil {
 
 		var e *sdkerrors.SDKError
@@ -183,14 +195,20 @@ func main() {
 		petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
 	)
 
-	ctx := context.Background()
-	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+	request := shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
 		ID:   petstore.Int64(10),
 		Name: "doggie",
 		PhotoUrls: []string{
 			"<value>",
 		},
-	})
+	}
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -221,14 +239,20 @@ func main() {
 		petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
 	)
 
-	ctx := context.Background()
-	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+	request := shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
 		ID:   petstore.Int64(10),
 		Name: "doggie",
 		PhotoUrls: []string{
 			"<value>",
 		},
-	})
+	}
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -300,14 +324,20 @@ func main() {
 		petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
 	)
 
-	ctx := context.Background()
-	res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+	request := shared.Pet{
+		Category: &shared.Category{
+			ID:   petstore.Int64(1),
+			Name: petstore.String("Dogs"),
+		},
 		ID:   petstore.Int64(10),
 		Name: "doggie",
 		PhotoUrls: []string{
 			"<value>",
 		},
-	})
+	}
+
+	ctx := context.Background()
+	res, err := s.Pet.AddPetForm(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -334,14 +364,16 @@ import (
 func main() {
 	s := petstore.New()
 
-	operationSecurity := operations.GetPetByIDSecurity{
+	request := operations.GetPetByIDRequest{
+		PetID: 504151,
+	}
+
+	security := operations.GetPetByIDSecurity{
 		APIKey: petstore.String("<YOUR_API_KEY_HERE>"),
 	}
 
 	ctx := context.Background()
-	res, err := s.Pet.GetPetByID(ctx, operations.GetPetByIDRequest{
-		PetID: 504151,
-	}, operationSecurity)
+	res, err := s.Pet.GetPetByID(ctx, request, security)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -43,14 +43,20 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Pet.AddPetForm(ctx, shared.Pet{
+    request := shared.Pet{
+        Category: &shared.Category{
+            ID: petstore.Int64(1),
+            Name: petstore.String("Dogs"),
+        },
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
             "<value>",
         },
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Pet.AddPetForm(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -96,14 +102,20 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Pet.AddPetJSON(ctx, shared.Pet{
+    request := shared.Pet{
+        Category: &shared.Category{
+            ID: petstore.Int64(1),
+            Name: petstore.String("Dogs"),
+        },
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
             "<value>",
         },
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Pet.AddPetJSON(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -149,8 +161,10 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
+    var request []byte = []byte("0xcf5E85CDde")
+    
     ctx := context.Background()
-    res, err := s.Pet.AddPetRaw(ctx, []byte("0xcf5E85CDde"))
+    res, err := s.Pet.AddPetRaw(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -187,8 +201,8 @@ package main
 import(
 	"petstore/v3/pkg/models/shared"
 	petstore "petstore/v3"
-	"context"
 	"petstore/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -197,10 +211,12 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Pet.DeletePet(ctx, operations.DeletePetRequest{
+    request := operations.DeletePetRequest{
         PetID: 441876,
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Pet.DeletePet(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -237,8 +253,8 @@ package main
 import(
 	"petstore/v3/pkg/models/shared"
 	petstore "petstore/v3"
-	"context"
 	"petstore/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -247,8 +263,10 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
+    request := operations.FindPetsByStatusRequest{}
+    
     ctx := context.Background()
-    res, err := s.Pet.FindPetsByStatus(ctx, operations.FindPetsByStatusRequest{})
+    res, err := s.Pet.FindPetsByStatus(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -285,8 +303,8 @@ package main
 import(
 	"petstore/v3/pkg/models/shared"
 	petstore "petstore/v3"
-	"context"
 	"petstore/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -295,8 +313,10 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
+    request := operations.FindPetsByTagsRequest{}
+    
     ctx := context.Background()
-    res, err := s.Pet.FindPetsByTags(ctx, operations.FindPetsByTagsRequest{})
+    res, err := s.Pet.FindPetsByTags(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -340,15 +360,16 @@ import(
 func main() {
     s := petstore.New()
 
+    request := operations.GetPetByIDRequest{
+        PetID: 504151,
+    }
 
-    operationSecurity := operations.GetPetByIDSecurity{
+    security := operations.GetPetByIDSecurity{
             APIKey: petstore.String("<YOUR_API_KEY_HERE>"),
         }
-
+    
     ctx := context.Background()
-    res, err := s.Pet.GetPetByID(ctx, operations.GetPetByIDRequest{
-        PetID: 504151,
-    }, operationSecurity)
+    res, err := s.Pet.GetPetByID(ctx, request, security)
     if err != nil {
         log.Fatal(err)
     }
@@ -386,8 +407,8 @@ package main
 import(
 	"petstore/v3/pkg/models/shared"
 	petstore "petstore/v3"
-	"context"
 	"petstore/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -396,10 +417,12 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Pet.UpdatePetWithForm(ctx, operations.UpdatePetWithFormRequest{
+    request := operations.UpdatePetWithFormRequest{
         PetID: 303241,
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Pet.UpdatePetWithForm(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -445,14 +468,20 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Pet.UpdatePetForm(ctx, shared.Pet{
+    request := shared.Pet{
+        Category: &shared.Category{
+            ID: petstore.Int64(1),
+            Name: petstore.String("Dogs"),
+        },
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
             "<value>",
         },
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Pet.UpdatePetForm(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -498,14 +527,20 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Pet.UpdatePetJSON(ctx, shared.Pet{
+    request := shared.Pet{
+        Category: &shared.Category{
+            ID: petstore.Int64(1),
+            Name: petstore.String("Dogs"),
+        },
         ID: petstore.Int64(10),
         Name: "doggie",
         PhotoUrls: []string{
             "<value>",
         },
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Pet.UpdatePetJSON(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -551,8 +586,10 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
+    var request []byte = []byte("0x6bCA76De67")
+    
     ctx := context.Background()
-    res, err := s.Pet.UpdatePetRaw(ctx, []byte("0x6bCA76De67"))
+    res, err := s.Pet.UpdatePetRaw(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -589,8 +626,8 @@ package main
 import(
 	"petstore/v3/pkg/models/shared"
 	petstore "petstore/v3"
-	"context"
 	"petstore/v3/pkg/models/operations"
+	"context"
 	"log"
 )
 
@@ -599,10 +636,12 @@ func main() {
         petstore.WithSecurity("<YOUR_PETSTORE_AUTH_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.Pet.UploadFile(ctx, operations.UploadFileRequest{
+    request := operations.UploadFileRequest{
         PetID: 565380,
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.Pet.UploadFile(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
